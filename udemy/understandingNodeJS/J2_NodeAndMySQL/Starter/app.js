@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var ,ysql = require('mysql');
+var mysql = require('mysql');
 
 var apiController = require('./controllers/apiController');
 var htmlController = require('./controllers/htmlController');
@@ -16,22 +16,26 @@ app.use('/', function (req, res, next) {
 	next();
 });
 
+//create connection to database
 app.use('/', function (req, res, next) {
 	console.log('Request Url:' + req.url);
+
 	var con = mysql.createConnection({
-		host: '127.0.0.1:3306',
+		host: 'localhost',
 		user: 'root',
-		password: '',
+		password: 'pa77cfkit',
 		database: 'addressbook'
 	});
 
-	con.query('SELECT People.ID, Firstname, Lastname, Address From People INNER JOIN PersonAddresses ON People.ID = PersonAddresses.PersonID'+
-	'INNER JOIN Addresses ON PersonAddresses.AddressID = Addresses.ID',
+	con.query(
+
+		'SELECT People.ID, Firstname, Lastname, Address '+
+		'From People INNER JOIN PersonAddresses '+
+		'ON People.ID = PersonAddresses.PersonID '+
+		'INNER JOIN Addresses ON PersonAddresses.AddressID = Addresses.ID',
 		function(err, rows){
-			if(err){
-				throw err;
-				console.log(rows[0].Firstname)
-			}
+			if(err){ throw err; }
+			console.log(rows[0].Firstname);
 
 		}
 	);
