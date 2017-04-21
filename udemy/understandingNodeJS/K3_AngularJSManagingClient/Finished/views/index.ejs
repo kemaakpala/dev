@@ -1,0 +1,21 @@
+<!--a directive is an attribute that is added to a tag-->
+<html ng-app="TestApp">
+	<head>
+		<title>The MEAN stack</title>
+    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+	</head>
+	<!--controlls the children of the body.-->
+	<body ng-controller="MainController as vm">
+		<!--/assets/ is a virtual directory for the public folder-->
+		<input type="text" name="message" ng-model="vm.message" />
+		<br>
+		{{ vm.message }}
+		<br>
+		<ul>
+			<li ng-repeat="person in vm.people">
+				{{ person.name }}
+			</li>
+		</ul>
+		<script src="/assets/js/app.js"></script>
+	</body>
+</html>
