@@ -5,7 +5,7 @@ module.exports = function(app){
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
 
-    api.get('/api/todos/:uname', function(req, res){
+    app.get('/api/todos/:uname', function(req, res){
         Todos.find({ username: req.params.uname }, function(err, todos){
             if(err){ throw err; }
 
@@ -14,7 +14,7 @@ module.exports = function(app){
     });
 
     app.get('/api/todo/:id', function(req, res){
-        Todos.findById({_id: req.prams.id}, function(err, todo){
+        Todos.findById({_id: req.params.id}, function(err, todo){
             if (err) { throw err };
 
             res.send(todo);
@@ -23,18 +23,21 @@ module.exports = function(app){
     });
 
     app.post('/api/todo', function(req,res){
-
-        if(re.body.id){
-            Todos.findByIdAndUpdate(req.body.id, 
-            {
-                todo:req.body.todo, isDone: req.body.isDone,
-                hasAttachment: req.body.hasAttachment
-            }, function(err, todo){
-                if(err) throw err;
-
-                res.send('Success');
-            });
+        //check if id exists if it does update
+        if(req.body.id){
+            Todos.findByIdAndUpdate(
+                req.body.id,
+                {
+                    todo:req.body.todo, 
+                    isDone: req.body.isDone,
+                    hasAttachment: req.body.hasAttachment
+                },
+                function(err, todo){
+                    if(err) throw err;
+                    res.send('Success');
+                });
         }else {
+            // if it's a new todo
             var newTodo = Todos({
                 username: 'test',
                 todo: req.body.todo,
@@ -42,15 +45,16 @@ module.exports = function(app){
                 hasAttachment: req.body.hasAttachment
             });
             newTodo.save(function(err){
+                if(err) throw err;
                 res.send('Success');
-            })
+            });
         }
 
     });
 
-    app.delete('/api/todo/', function(){
+    app.delete('/api/todo/', function(req, res){
         Todos.findByIdAndRemove(req.body.id, function(err){
-            if(err){ throw err;}
+            if(err){ throw err; }
             res.send('Success');
         });
     });
