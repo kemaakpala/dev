@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>david_morris</title>
+  <meta name="generator" content="Google Web Designer 1.7.3.0307">
+  <style type="text/css" id="gwd-text-style">
+    p {
+      margin: 0px;
+    }
+    h1 {
+      margin: 0px;
+    }
+    h2 {
+      margin: 0px;
+    }
+    h3 {
+      margin: 0px;
+    }
+  </style>
+  <style type="text/css">
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+    }
+    body {
+      transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform-style: preserve-3d;
+      background-color: transparent;
+    }
+    .gwd-div-tqzf {
+      position: absolute;
+      height: 100%;
+      top: 0%;
+      width: 100%;
+      left: 0%;
+    }
+    .gwd-img-1tny {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0%;
+      left: 0%;
+    }
+    .gwd-div-1j3b {
+      position: absolute;
+      height: 33%;
+      width: 64.29%;
+      left: 4.28%;
+      top: 55.25%;
+    }
+    .gwd-div-a27p {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      width: 8.25%;
+      height: 100%;
+      cursor: pointer;
+    }
+    .gwd-div-17qf {
+      position: absolute;
+      top: 0%;
+      height: 100%;
+      left: 8.54%;
+      width: 83%;
+      overflow: hidden;
+    }
+    .gwd-div-y3ip {
+      width: 8.49%;
+      left: 91.41%;
+      height: 100%;
+      top: 0%;
+    }
+    .gwd-img-1h7g {
+      position: absolute;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      left: 0%;
+    }
+    .gwd-img-9mqy {
+      position: absolute;
+      left: 0%;
+      top: 0%;
+      height: 100%;
+      width: 100%;
+    }
+    .gwd-div-18d8 {
+      width: 8.49%;
+      height: 100%;
+      top: 0%;
+      left: 0%;
+    }
+    .gwd-img-uzvt {
+      display: block;
+      height: 100%;
+      left: 0.01%;
+      position: absolute;
+      top: 0%;
+      width: 24.95%;
+    }
+    .gwd-img-166d {
+      width: 35%;
+      left: 35%;
+    }
+    .gwd-img-b5bd {
+      width: 35%;
+      left: 70%;
+    }
+    .gwd-img-3616 {
+      width: 35%;
+      left: 105%;
+    }
+    .gwd-img-1ag7 {
+      width: 35%;
+    }
+  </style>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+  <!--  <script src="http://malsup.github.io/jquery.cycle2.carousel.js"></script> -->
+</head>
+
+<body class="htmlNoPages">
+  <div class="gwd-div-tqzf" id="container">
+    <img src="assets/main_card.jpg" class="gwd-img-1tny" id="main-image">
+    <div class="gwd-div-1j3b" id="scroller-container">
+      <div class="gwd-div-17qf" id="scroller">
+        <img src="assets/thumb01.png" class="gwd-img-uzvt gwd-img-12o5 gwd-img-1ag7" id="image_1">
+        <img src="assets/thumb02.png" class="gwd-img-uzvt gwd-img-166d" id="image_2">
+        <img src="assets/thumb03.png" class="gwd-img-uzvt gwd-img-b5bd" id="image_3">
+        <img src="assets/thumb04.png" class="gwd-img-uzvt gwd-img-3616" id="image_4">
+      </div>
+      <div class="gwd-div-a27p gwd-div-18d8" id="btn_left">
+        <img src="assets/btn_left.png" class="gwd-img-1h7g" id="btn_left_image">
+      </div>
+      <div class="gwd-div-a27p gwd-div-y3ip" id="btn_right">
+        <img src="assets/btn_right.png" class="gwd-img-9mqy">
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  
+  $(document).ready(function(){
+    
+    'use strict';
+    
+    var $btns = $('.gwd-div-a27p'),
+        $scroller = $('#scroller'),
+        $images = $scroller.children('img'),
+        $noOfImages = $images.length,
+        $imageWidth = $images.width(),
+        $imageHeight = $images.height(),
+        $totalImageWidth = $imageWidth * $noOfImages;
+    console.log($scroller.children('img').width());
+    console.log($totalImageWidth);
+    
+    var newDiv = $('<div id="jsImageContainer"></div>').append($images);
+/*     newDiv.width($totalImageWidth);
+    newDiv.height($imageHeight); */
+    
+    var newDivStyles = {
+      position: 'absolute',
+      width: $totalImageWidth,
+      height: $imageHeight
+    };
+    
+    newDiv.css(newDivStyles);
+    
+    $scroller.append(newDiv);
+    
+    $btns.on('click', function(evt){
+      
+      console.log($(this));
+      
+    });
+    
+    
+    function scrollImage(){
+      //autoplayfunction
+      var autoPlay = (function(){
+        
+        // every 3seconds run the function below
+        setInterval(function(){
+          
+          //move left by the width of 1 image
+          $('#jsImageContainer')
+            .animate(
+              {
+                left: '-'+$imageWidth
+              },1000
+          );//endof animate
+          
+        }, 3000);//endof setInteral
+        
+      }());
+      
+      
+    }
+    
+    scrollImage();
+    
+  });
+</script>
+</html>
