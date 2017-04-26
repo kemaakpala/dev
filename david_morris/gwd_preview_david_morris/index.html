@@ -119,8 +119,7 @@ body {
 .gwd-img-1ag7 {
     width: 35%;
 }</style>
- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-  <!--  <script src="http://malsup.github.io/jquery.cycle2.carousel.js"></script> -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
 </head>
 
 <body class="htmlNoPages">
@@ -141,68 +140,75 @@ body {
       </div>
     </div>
   </div>
+  <script type="text/javascript">
+    $(document).ready(function() {
 
-<script type="text/javascript">
-  
-  $(document).ready(function(){
-    
-    'use strict';
-    
-    var $btns = $('.gwd-div-a27p'),
+      'use strict';
+
+      var $btns = $('.gwd-div-a27p'),
         $scroller = $('#scroller'),
         $images = $scroller.children('img'),
         $noOfImages = $images.length,
         $imageWidth = $images.width(),
         $imageHeight = $images.height(),
         $totalImageWidth = $imageWidth * $noOfImages;
-    console.log($scroller.children('img').width());
-    console.log($totalImageWidth);
-    
-    var newDiv = $('<div id="jsImageContainer"></div>').append($images);
-/*     newDiv.width($totalImageWidth);
-    newDiv.height($imageHeight); */
-    
-    var newDivStyles = {
-      position: 'absolute',
-      width: $totalImageWidth,
-      height: $imageHeight
-    };
-    
-    newDiv.css(newDivStyles);
-    
-    $scroller.append(newDiv);
-    
-    $btns.on('click', function(evt){
-      
-      console.log($(this));
-      
+      console.log($scroller.children('img').width());
+      console.log($totalImageWidth);
+
+      var newDiv = $('<div id="jsImageContainer"></div>').append($images);
+      /*     newDiv.width($totalImageWidth);
+          newDiv.height($imageHeight); */
+
+      var newDivStyles = {
+        position: 'absolute',
+        width: $totalImageWidth,
+        height: $imageHeight
+      };
+
+      newDiv.css(newDivStyles);
+
+      $scroller.append(newDiv);
+
+      $btns.on('click', function(evt) {
+
+        console.log($(this));
+
+      });
+
+
+      function scrollImage() {
+        //autoplayfunction
+        var autoPlay = (function() {
+
+          // every 3seconds run the function below
+          setInterval(function() {
+
+            //move left by the width of 1 image
+            $('#jsImageContainer')
+              .animate({
+                left: '-' + $imageWidth
+              }, 
+              1000,
+              function(){
+              //complete
+              console.log('complete');
+              console.log(newDiv.children('img')[0]);
+              newDiv.append(newDiv.children('img')[0]);
+              newDiv.css('left','0');
+              
+            }); //endof animate
+
+          }, 3000); //endof setInteral
+
+        }());
+
+
+      }
+
+      scrollImage();
+
     });
-    
-    
-    function scrollImage(){
-      //autoplayfunction
-      var autoPlay = (function(){
-        
-        // every 3seconds run the function below
-        setInterval(function(){
-          
-          //move left by the width of 1 image
-          $('#jsImageContainer')
-            .animate(
-              {
-                left: '-'+$imageWidth
-              },1000
-          );//endof animate
-          
-        }, 3000);//endof setInteral
-        
-      }());
-      
-      
-    }
-    
-    scrollImage();
-    
-  });
-</script>
+  </script>
+
+
 </body></html>
