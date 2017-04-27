@@ -152,12 +152,15 @@ body {
         $imageWidth = $images.width(),
         $imageHeight = $images.height(),
         $totalImageWidth = $imageWidth * $noOfImages;
-      console.log($scroller.children('img').width());
-      console.log($totalImageWidth);
+      
+      console.log('$imageWidth: '+ $scroller.children('img').width(),
+                  'outerWidth: ' + $scroller.children('img').outerWidth(),
+                  '$noOfImages: '+ $noOfImages
+      );
+      
+      console.log('$totalImageWidth: '+ $totalImageWidth);
 
       var newDiv = $('<div id="jsImageContainer"></div>').append($images);
-      /*     newDiv.width($totalImageWidth);
-          newDiv.height($imageHeight); */
 
       var newDivStyles = {
         position: 'absolute',
@@ -179,26 +182,51 @@ body {
       function scrollImage() {
         //autoplayfunction
         var autoPlay = (function() {
-
+          var $startPosition = [];
+          newDiv.children('img').each(function(index){
+            console.log( $(this).position().left);
+            var $imagePosPercent = ($(this).position().left / $totalImageWidth) * 100;
+            $startPosition.push(Math.floor($imagePosPercent));
+          
+          });
+          
           // every 3seconds run the function below
-          setInterval(function() {
+           
+           setInterval(function() {
 
             //move left by the width of 1 image
             $('#jsImageContainer')
               .animate({
-                left: '-' + $imageWidth
-              }, 
-              1000,
-              function(){
-              //complete
-              console.log('complete');
-              console.log(newDiv.children('img')[0]);
-              newDiv.append(newDiv.children('img')[0]);
-              newDiv.css('left','0');
+                  left: '-' + $imageWidth
+                },
+                1000,
+                function() {
+                  //complete
+                  console.log('complete');
+                  console.log(newDiv.children('img')[0]);
               
-            }); //endof animate
+                  //take 1st image and add it to the end of the image list.
+                  newDiv.append(newDiv.children('img')[0]);
+              
+                  //overwrite the image position for all images
+                  newDiv.children('img').each(function(index){
+                    
+                    var $leftPositionPercent = $startPosition[index]+'%';
+                    
+                    var newImageStyles = {
+                      left: $leftPositionPercent
+                    };
+                    
+                    $(this).css(newImageStyles); 
+                    
+                  });
+                  
+                  newDiv.css('left', '0');
 
-          }, 3000); //endof setInteral
+                }); //endof animate 
+
+          }, 3000); //endof setInterval
+          
 
         }());
 
