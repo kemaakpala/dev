@@ -93,17 +93,18 @@
       top: 0%;
       left: 0%;
     }
-    .gwd-img-uzvt {
+    .slides {
       display: block;
       height: 100%;
       left: 0.01%;
       position: absolute;
       top: 0%;
-      width: 24.95%;
+      border: 1px solid red;
+      box-sizing: border-box;
     }
     .gwd-img-166d {
-      width: 35%;
       left: 35%;
+      width: 35%;
     }
     .gwd-img-b5bd {
       width: 35%;
@@ -125,10 +126,10 @@
     <img src="assets/main_card.jpg" class="gwd-img-1tny" id="main-image" data-gwd-tl-locked="">
     <div class="gwd-div-1j3b" id="scroller-container">
       <div class="gwd-div-17qf" id="scroller">
-        <img src="assets/thumb01.png" class="gwd-img-uzvt gwd-img-12o5 gwd-img-1ag7" id="image_1">
-        <img src="assets/thumb02.png" class="gwd-img-uzvt gwd-img-166d" id="image_2">
-        <img src="assets/thumb03.png" class="gwd-img-uzvt gwd-img-b5bd" id="image_3">
-        <img src="assets/thumb04.png" class="gwd-img-uzvt gwd-img-3616" id="image_4">
+        <img src="assets/thumb01.png" class="gwd-img-12o5 gwd-img-1ag7 slides" id="image_1">
+        <img src="assets/thumb02.png" class="gwd-img-166d slides" id="image_2">
+        <img src="assets/thumb03.png" class="gwd-img-b5bd slides" id="image_3">
+        <img src="assets/thumb04.png" class="gwd-img-3616 slides" id="image_4">
       </div>
       <div class="gwd-div-a27p gwd-div-18d8" id="btn_left">
         <img src="assets/btn_left.png" class="gwd-img-1h7g" id="btn_left_image">
@@ -145,33 +146,34 @@
 
       var $btns = $('.gwd-div-a27p'),
         $scroller = $('#scroller'),
-        $images = $scroller.children('img'),
+        $images = $('.slides'),
         $noOfImages = $images.length,
-        $imageWidth = $images.width(),//need to get percentage width here to get the desired scroll left effect.
         $imageHeight = $images.height(),
         $perctImageHeight = ($imageHeight / $scroller.height()) * 100,
-        $totalImageWidth = $imageWidth * $noOfImages,
+        $totalImageWidth = (function() {
+          var self = $(this);
+          self.totalWidth = 0;
+          $images.each(function(index) {
+            self.totalWidth = $(this).width() + self.totalWidth;
+          });
+          return self.totalWidth;
+        }()),
+
         $perctTotalImageWidth = ($totalImageWidth / $scroller.width()) * 100;
-
-      console.log(
-        '$imageWidth: ' + $scroller.children('img').width(),
-        'outerWidth: ' + $scroller.children('img').outerWidth(),
-        '$noOfImages: ' + $noOfImages
-      );
-
-      console.log('$totalImageWidth: ' + $totalImageWidth);
 
       var newDiv = $('<div id="jsImageContainer"></div>').append($images);
 
       var newDivStyles = {
         position: 'absolute',
-        width: $perctTotalImageWidth+'%',
-        height: $perctImageHeight+ '%'
+        width: $perctTotalImageWidth + '%',
+        height: $perctImageHeight + '%'
       };
 
       newDiv.css(newDivStyles);
 
       $scroller.append(newDiv);
+
+      console.log(newDiv);
 
       $btns.on('click', function(evt) {
 
@@ -183,13 +185,23 @@
       function scrollImage() {
         //autoplayfunction
         var autoPlay = (function() {
+
           var $startPosition = [];
-          newDiv.children('img').each(function(index) {
+
+          $images.each(function(index) {
             console.log($(this).position().left);
             var $imagePosPercent = ($(this).position().left / $totalImageWidth) * 100;
-            $startPosition.push(Math.floor($imagePosPercent));
+            var $imageWidthPercent = ($(this).width() / $totalImageWidth) * 100;
+            $startPosition.push({
+              imagePos: Math.floor($imagePosPercent),
+              imageWidth: Math.floor($imageWidthPercent)
+            });
 
           });
+
+          
+          //we need to recalculate the percentage widths for all the images. this should fix the issue of the images being resized.
+          console.log($startPosition);
 
           // every 3seconds run the function below
 
@@ -198,7 +210,7 @@
             //move left by the width of 1 image
             $('#jsImageContainer')
               .animate({
-                  left: '-' + $imageWidth
+                  left: '-' + 50 + '%'
                 },
                 1000,
                 function() {
@@ -212,7 +224,7 @@
                   //overwrite the image position for all images
                   newDiv.children('img').each(function(index) {
 
-                    var $leftPositionPercent = $startPosition[index] + '%';
+                    var $leftPositionPercent = $startPosition[index].imagePos + '%';
 
                     var newImageStyles = {
                       left: $leftPositionPercent
@@ -229,7 +241,7 @@
           }, 3000); //endof setInterval
 
 
-        }());
+        }()); //end of IIFE
 
 
       }
