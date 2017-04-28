@@ -43,6 +43,7 @@
       height: 100%;
       top: 0%;
       left: 0%;
+      display: none;
     }
     .gwd-div-1j3b {
       position: absolute;
@@ -95,27 +96,30 @@
     }
     .slides {
       display: block;
-      height: 100%;
+      height:auto;
+      /*height: 100%;
       left: 0.01%;
-      position: absolute;
-      top: 0%;
+      position: absolute;*/
+      float:left;
+      /*top: 0%;*/
       border: 1px solid red;
       box-sizing: border-box;
+      /*width: 25%;*/
+    }
+    .gwd-img-12o5 {
+      width: 33.3%;
     }
     .gwd-img-166d {
-      left: 35%;
-      width: 35%;
+      left: 33.3%;
+      width: 33.3%;
     }
     .gwd-img-b5bd {
-      width: 35%;
-      left: 70%;
+      left: 66.6%;
+      width: 33.3%;
     }
     .gwd-img-3616 {
-      width: 35%;
-      left: 105%;
-    }
-    .gwd-img-1ag7 {
-      width: 35%;
+      left: 99.9%;
+      width: 33.3%;
     }
   </style>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
@@ -123,7 +127,7 @@
 
 <body class="htmlNoPages">
   <div class="gwd-div-tqzf" id="container">
-    <img src="assets/main_card.jpg" class="gwd-img-1tny" id="main-image" data-gwd-tl-locked="">
+    <img src="assets/main_card.jpg" class="gwd-img-1tny" id="main-image">
     <div class="gwd-div-1j3b" id="scroller-container">
       <div class="gwd-div-17qf" id="scroller">
         <img src="assets/thumb01.png" class="gwd-img-12o5 gwd-img-1ag7 slides" id="image_1">
@@ -166,7 +170,8 @@
       var newDivStyles = {
         position: 'absolute',
         width: $perctTotalImageWidth + '%',
-        height: $perctImageHeight + '%'
+        height: $perctImageHeight + '%',
+        overflow: 'auto'
       };
 
       newDiv.css(newDivStyles);
@@ -199,18 +204,24 @@
 
           });
 
-          
+
           //we need to recalculate the percentage widths for all the images. this should fix the issue of the images being resized.
           console.log($startPosition);
 
           // every 3seconds run the function below
-
+          var thisPos = 0;
+          var posLeft = thisPos;
           setInterval(function() {
-
+            thisPos += 1;
+            if (thisPos < $images.length) {
+              posLeft = $startPosition[thisPos].imageWidth + '%';
+              console.log(posLeft);
+            }
             //move left by the width of 1 image
             $('#jsImageContainer')
               .animate({
-                  left: '-' + 50 + '%'
+                  left: '-' + posLeft
+                    //left: '-' + 50 + '%'
                 },
                 1000,
                 function() {
@@ -223,7 +234,6 @@
 
                   //overwrite the image position for all images
                   newDiv.children('img').each(function(index) {
-
                     var $leftPositionPercent = $startPosition[index].imagePos + '%';
 
                     var newImageStyles = {
@@ -231,18 +241,15 @@
                     };
 
                     $(this).css(newImageStyles);
-
                   });
 
                   newDiv.css('left', '0');
-
                 }); //endof animate 
 
           }, 3000); //endof setInterval
 
 
         }()); //end of IIFE
-
 
       }
 

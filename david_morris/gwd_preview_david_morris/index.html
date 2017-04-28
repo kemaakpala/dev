@@ -46,6 +46,7 @@ body {
     height: 100%;
     top: 0%;
     left: 0%;
+    display: none;
 }
 .gwd-div-1j3b {
     position: absolute;
@@ -98,27 +99,25 @@ body {
 }
 .slides {
     display: block;
-    height: 100%;
-    left: 0.01%;
-    position: absolute;
-    top: 0%;
+    height: auto;
+    float: left;
     border: 1px solid red;
     box-sizing: border-box;
 }
+.gwd-img-12o5 {
+    width: 33.3%;
+}
 .gwd-img-166d {
-    left: 35%;
-    width: 35%;
+    left: 33.3%;
+    width: 33.3%;
 }
 .gwd-img-b5bd {
-    width: 35%;
-    left: 70%;
+    left: 66.6%;
+    width: 33.3%;
 }
 .gwd-img-3616 {
-    width: 35%;
-    left: 105%;
-}
-.gwd-img-1ag7 {
-    width: 35%;
+    left: 99.9%;
+    width: 33.3%;
 }</style>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
 </head>
@@ -168,8 +167,8 @@ body {
       var newDivStyles = {
         position: 'absolute',
         width: $perctTotalImageWidth + '%',
-        //width: 140 + '%',
-        height: $perctImageHeight + '%'
+        height: $perctImageHeight + '%',
+        overflow: 'auto'
       };
 
       newDiv.css(newDivStyles);
@@ -202,16 +201,24 @@ body {
 
           });
 
+
+          //we need to recalculate the percentage widths for all the images. this should fix the issue of the images being resized.
           console.log($startPosition);
 
           // every 3seconds run the function below
-
+          var thisPos = 0;
+          var posLeft = thisPos;
           setInterval(function() {
-
+            thisPos += 1;
+            if (thisPos < $images.length) {
+              posLeft = $startPosition[thisPos].imageWidth + '%';
+              console.log(posLeft);
+            }
             //move left by the width of 1 image
             $('#jsImageContainer')
               .animate({
-                  left: '-' + 50 + '%'
+                  left: '-' + posLeft
+                    //left: '-' + 50 + '%'
                 },
                 1000,
                 function() {
@@ -224,7 +231,6 @@ body {
 
                   //overwrite the image position for all images
                   newDiv.children('img').each(function(index) {
-
                     var $leftPositionPercent = $startPosition[index].imagePos + '%';
 
                     var newImageStyles = {
@@ -232,18 +238,15 @@ body {
                     };
 
                     $(this).css(newImageStyles);
-
                   });
 
                   newDiv.css('left', '0');
-
                 }); //endof animate 
 
           }, 3000); //endof setInterval
 
 
         }()); //end of IIFE
-
 
       }
 
