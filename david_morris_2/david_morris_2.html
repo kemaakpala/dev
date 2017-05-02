@@ -165,7 +165,7 @@
 
       'use strict';
 
-      var $btns = $('.gwd-div-a27p'),
+      var $btns = $('.arrows'),
         $scroller = $('#scroller'),
         $images = $('.slides'),
         $noOfImages = $images.length,
@@ -186,21 +186,22 @@
 
       //$perctTotalImageWidth = ($totalImageWidth / $scroller.width()) * 100;
 
-      var newDiv = $('<div id="jsImageContainer"></div>').append($images);
-
-      var newDivStyles = {
-        position: 'absolute',
-        width: $totalImageWidth,
-        height: $imageHeight,
-        overflow: 'auto'
-      };
-
-      newDiv.css(newDivStyles);
-
-      $scroller.append(newDiv);
-
-      console.log(newDiv);
-
+      // create imageContainer Div
+      var $imageContainer = (function (){
+        var $newImageContainer = $('<div id="jsImageContainer"></div>').append($images),
+            $ImageContainerStyles = {
+              position: 'absolute',
+              width: $totalImageWidth,
+              height: $imageHeight,
+              overflow: 'auto'
+            };
+        $newImageContainer.css($ImageContainerStyles);
+        $scroller.append($newImageContainer);
+        
+        return $newImageContainer;
+      }());
+      
+      //click event for btns
       $btns.on('click', function(evt) {
 
         console.log($(this));
@@ -209,19 +210,21 @@
 
 
       function scrollImage() {
-        //autoplayfunction
+        
+        //autoplay slide 
         var autoPlay = (function() {
 
-          var $startPosition = [];
+          var $sliderInit = [];
 
+          //loop through images
           $images.each(function(index) {
-           console.log('$(this).position().left:' + $(this).position().left, '$(this).width: ' + $(this).width());
+            console.log('$(this).position().left:' + $(this).position().left, '$(this).width: ' + $(this).width());
             var $imagePos = $(this).position().left,
               $imagePosPercent = ($imagePos / $totalImageWidth) * 100,
               $imageWidth = $(this).width(),
               $imageWidthPercent = ($imageWidth / $totalImageWidth) * 100;
 
-            $startPosition.push({
+            $sliderInit.push({
               imagePos: Math.floor($imagePos),
               imageWidth: Math.floor($imageWidth),
               imagePosPercent: Math.floor($imagePosPercent),
@@ -230,7 +233,7 @@
 
           });
 
-          console.log($startPosition);
+          console.log($sliderInit);
 
           // every 3seconds run the function below
           var thisPos = 0;
@@ -238,7 +241,7 @@
           setInterval(function() {
             thisPos += 1;
             if (thisPos < $images.length) {
-              posLeft = $startPosition[thisPos].imageWidth;
+              posLeft = $sliderInit[thisPos].imageWidth;
               console.log(posLeft);
             }
 
@@ -247,28 +250,27 @@
             }, {
               duration: 1000,
               specialEasing: 'easein',
-              complete: appendDiv(newDiv, $startPosition)
+              complete: appendImage($imageContainer, $sliderInit)
             }); //endof animate 
-          }, 3000); //endof setInterval
+          }, 2000); //endof setInterval
 
         }()); //end of IIFE
 
       }
-      
-      function appendDiv($selector, $startPosition) {
-          //take 1st image and add it to the end of the image list.
-          $selector.append($selector.children('img')[0]);
-          //overwrite the image position for all images
-          $selector.children('img').each(function(index) {
-            var $leftPositionPercent = $startPosition[index].imagePos + '%';
-            var newImageStyles = {
-              left: $leftPositionPercent
-            };
-            $(this).css(newImageStyles);
-          });
-          $selector.css('left', '0');
+
+      function appendImage($selectorObj, $sliderInit) {
+        //take 1st image and add it to the end of the image list.
+        $selectorObj.append($selectorObj.children('img')[0]);
+        
+        //reset ImageContainer position after appending first image to back of the list
+        resetImageContainerPos($selectorObj);
       }
-                        
+      
+      function resetImageContainerPos ($selectorObj){
+        console.log($selectorObj);
+        $selectorObj.css('left', '0');
+      }
+
       scrollImage();
 
     });
