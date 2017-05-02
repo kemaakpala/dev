@@ -84,15 +84,15 @@
     }
     .gwd-img-dfyu {
       height: 132px;
-      left: 38.13%;
       width: 33.33%;
+      left: 38.13%;
       top: 0%;
     }
     .gwd-img-m865 {
       height: 132px;
-      top: 0%;
-      left: 72.98%;
       width: 33.33%;
+      left: 72.98%;
+      top: 0%;
     }
     .gwd-img-19rx {
       height: 132px;
@@ -102,10 +102,10 @@
     }
     .slides {
       display: block;
-      float: left;
       border: 1px solid red;
       box-sizing: border-box;
       height: 100%;
+      float: left;
     }
     .gwd-img-1m7f {
       position: absolute;
@@ -131,7 +131,9 @@
     .gwd-img-1fn1 {
       height: 100%;
     }
-    .gwd-img-354p {}
+    .gwd-img-354p {
+      height: 100%;
+    }
     .gwd-img-anum {
       height: 100%;
     }
@@ -165,113 +167,170 @@
 
       'use strict';
 
-      var $btns = $('.arrows'),
-        $scroller = $('#scroller'),
-        $images = $('.slides'),
-        $noOfImages = $images.length,
-        $imageHeight = $images.height(),
-        //$perctImageHeight = ($imageHeight / $scroller.height()) * 100,
-        $totalImageWidth = (function() {
-          var self = $(this);
-          self.totalWidth = 0;
-          $images.each(function(index) {
-            self.totalWidth = $(this).width() + self.totalWidth;
-            $(this).css({
-              width: $(this).width()
-            });
+      var $sliderInit = {
+        buttons: $('.arrows'),
+        scroller: $('#scroller'),
+        images: $('.slides'),
+        noOfImages: $('.slides').length,
+        imageHeight: $('.slides').height,
+        totalImageWidth: 0
+      };
 
+      $sliderInit.totalImageWidth = (function() {
+        var self = $(this),
+          $images = $sliderInit.images;
+        self.totalWidth = 0;
+
+        $images.each(function(index) {
+          self.totalWidth = $(this).width() + self.totalWidth;
+          $(this).css({
+            width: $(this).width()
           });
-          return self.totalWidth;
-        }());
+        });
+        return self.totalWidth;
+      }());
 
-      //$perctTotalImageWidth = ($totalImageWidth / $scroller.width()) * 100;
+      /*       var $btns = $('.arrows'),
+              $scroller = $('#scroller'),
+              $images = $('.slides'),
+              $noOfImages = $images.length,
+              $imageHeight = $images.height(),
+              //$perctImageHeight = ($imageHeight / $scroller.height()) * 100,
+              $totalImageWidth = (function() {
+                var self = $(this);
+                self.totalWidth = 0;
+                $images.each(function(index) {
+                  self.totalWidth = $(this).width() + self.totalWidth;
+                  $(this).css({
+                    width: $(this).width()
+                  });
 
+                });
+                return self.totalWidth;
+              }());
+       
+            //$perctTotalImageWidth = ($totalImageWidth / $scroller.width()) * 100;
+      */
       // create imageContainer Div
-      var $imageContainer = (function (){
-        var $newImageContainer = $('<div id="jsImageContainer"></div>').append($images),
-            $ImageContainerStyles = {
-              position: 'absolute',
-              width: $totalImageWidth,
-              height: $imageHeight,
-              overflow: 'auto'
-            };
+      var $imageContainer = (function() {
+        var $newImageContainer = $('<div id="jsImageContainer"></div>').append($sliderInit.images),
+          $ImageContainerStyles = {
+            position: 'absolute',
+            width: $sliderInit.totalImageWidth,
+            height: $sliderInit.imageHeight,
+            overflow: 'auto'
+          };
         $newImageContainer.css($ImageContainerStyles);
-        $scroller.append($newImageContainer);
-        
+        $sliderInit.scroller.append($newImageContainer);
+
         return $newImageContainer;
       }());
-      
+
       //click event for btns
-      $btns.on('click', function(evt) {
+      $sliderInit.buttons.on('click', function(evt) {
 
         console.log($(this));
 
       });
 
+      /***************************************************************************/
+      /***
+       ** scrollImage()
+       ** we move the jsImageContainer left / right by the width of the current image.
+       ** if direction is left:
+       * - we move the container -<imageWidth>,
+       * - we move the first image to the end of the Image list.
+       ** elseif direction is right:
+       * - we move the container +<imageWidth>,
+       * - we move the last image to the beginning of the Image list.
+       ***/
+      /*********************************************************************************/
 
-      function scrollImage() {
-        
-        //autoplay slide 
-        var autoPlay = (function() {
+      // function scrollImage() {
+      //currrently autoplays slide 
+      var $scrollerObj = {};
+      $scrollerObj.scrollImage = (function($direction) {
+        $direction = $direction || 'left';
 
-          var $sliderInit = [];
 
-          //loop through images
-          $images.each(function(index) {
-            console.log('$(this).position().left:' + $(this).position().left, '$(this).width: ' + $(this).width());
-            var $imagePos = $(this).position().left,
-              $imagePosPercent = ($imagePos / $totalImageWidth) * 100,
-              $imageWidth = $(this).width(),
-              $imageWidthPercent = ($imageWidth / $totalImageWidth) * 100;
 
-            $sliderInit.push({
-              imagePos: Math.floor($imagePos),
-              imageWidth: Math.floor($imageWidth),
-              imagePosPercent: Math.floor($imagePosPercent),
-              imageWidthPercent: Math.floor($imageWidthPercent)
-            });
+        var $sliderArr = [];
 
+        //loop through images
+        $sliderInit.images.each(function(index) {
+          //console.log('$(this).position().left:' + $(this).position().left, '$(this).width: ' + $(this).width());
+          var $imagePos = $(this).position().left,
+            $imagePosPercent = ($imagePos / $sliderInit.totalImageWidth) * 100,
+            $imageWidth = $(this).width(),
+            $imageWidthPercent = ($imageWidth / $sliderInit.totalImageWidth) * 100;
+
+          $sliderArr.push({
+            imagePos: Math.floor($imagePos),
+            imageWidth: Math.floor($imageWidth),
+            imagePosPercent: Math.floor($imagePosPercent),
+            imageWidthPercent: Math.floor($imageWidthPercent)
           });
 
-          console.log($sliderInit);
+        });
 
+        console.log($sliderInit);
+        //return false;
+        $scrollerObj.move = (function() {
           // every 3seconds run the function below
-          var thisPos = 0;
-          var posLeft = thisPos;
+          var thisPos = ($direction === 'left') ? (0) : (4),
+            posLeft = thisPos;
           setInterval(function() {
-            thisPos += 1;
-            if (thisPos < $images.length) {
-              posLeft = $sliderInit[thisPos].imageWidth;
-              console.log(posLeft);
+            if ($direction === 'left') {
+              thisPos += 1;
+            } else {
+              thisPos -= 1;
             }
 
+            console.log('thisPos: ' + thisPos);
+
+            if (thisPos < $sliderInit.images.length && thisPos > 0) {
+              posLeft = $sliderArr[thisPos].imageWidth;
+            }
+
+            /*
+            if($direction === 'right'){
+               appendImage($imageContainer, $direction)  
+            }
+            */
+
             $('#jsImageContainer').animate({
-              left: '-' + posLeft
+              left: ($direction === 'left') ? ('-' + posLeft) : ('+' + posLeft)
             }, {
               duration: 1000,
               specialEasing: 'easein',
-              complete: appendImage($imageContainer, $sliderInit)
+              complete: appendImage($imageContainer, $direction)
             }); //endof animate 
-          }, 2000); //endof setInterval
+          }, 3000); //endof setInterval 
+        }());
 
-        }()); //end of IIFE
+      }('right')); //end of IIFE
 
-      }
+      //}
 
-      function appendImage($selectorObj, $sliderInit) {
+      function appendImage($selectorObj, $direction) {
         //take 1st image and add it to the end of the image list.
-        $selectorObj.append($selectorObj.children('img')[0]);
-        
-        //reset ImageContainer position after appending first image to back of the list
+        if ($direction === 'left') {
+          $selectorObj.append($selectorObj.children('img')[0]);
+        } else {
+          //take last image and add it to the front of the image list.
+          $selectorObj.prepend($selectorObj.children('img')[$sliderInit.images.length - 1]);
+        }
+
+        //reset ImageContainer position after moving image to the front or end of the image list.
         resetImageContainerPos($selectorObj);
       }
-      
-      function resetImageContainerPos ($selectorObj){
-        console.log($selectorObj);
+
+      // reset image Container Position
+      function resetImageContainerPos($selectorObj) {
         $selectorObj.css('left', '0');
       }
 
-      scrollImage();
+      //scrollImage();
 
     });
   </script>
