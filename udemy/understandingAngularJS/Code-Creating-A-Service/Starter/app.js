@@ -2,22 +2,16 @@ var myApp = angular.module('myApp', ['ngRoute']);
 
 myApp.config(function ($routeProvider) {
     
-    $routeProvider
-    
-    .when('/', {
+    $routeProvider.when('/', {
         templateUrl: 'pages/main.html',
         controller: 'mainController'
-    })
-    
-    .when('/second', {
+    }).when('/second', {
         templateUrl: 'pages/second.html',
         controller: 'secondController'
-    })
-    
-    .when('/second/:num', {
+    }).when('/second/:num', {
         templateUrl: 'pages/second.html',
         controller: 'secondController'
-    })
+    });
     
 });
 
@@ -37,7 +31,7 @@ myApp.controller('mainController', ['$scope', '$log','nameService', function($sc
     
     $scope.name = nameService.name;
     
-    $scope.$watch('name', fuction(){
+    $scope.$watch('name', function(){
         
         nameService.name = $scope.name;
     
@@ -54,7 +48,7 @@ myApp.controller('secondController', ['$scope', '$log', '$routeParams','nameServ
     
     $scope.name =  nameService. name;
         
-    $scope.$watch('name', fuction(){
+    $scope.$watch('name', function(){
         
         nameService.name = $scope.name;
     
