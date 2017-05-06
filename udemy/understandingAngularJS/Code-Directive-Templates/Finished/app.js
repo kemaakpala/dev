@@ -33,11 +33,10 @@ myApp.controller('secondController', ['$scope', '$log', '$routeParams', function
     
 }]);
 
-//searchResult directive
-myApp.directive('searchResult', function(){
-    return {
-        restrict: 'AECM',//Attribute || Element || Class || Comment
-        template: '<a href="#" class="list-group-item"><h4 class="list-group-item-heading">Doe, John</h4><p class="list-group-item-text">555 Main St.,New York, NY 1111</p></a>',
-        replace: true// removes custom tag from html
-    };
+myApp.directive("searchResult", function() {
+   return {
+       restrict: 'AECM',
+       templateUrl: 'directives/searchresult.html',
+       replace: true
+   }
 });

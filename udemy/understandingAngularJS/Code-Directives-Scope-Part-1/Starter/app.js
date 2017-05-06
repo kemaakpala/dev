@@ -29,15 +29,23 @@ myApp.controller('mainController', ['$scope', '$log', function($scope, $log) {
 
 myApp.controller('secondController', ['$scope', '$log', '$routeParams', function($scope, $log, $routeParams) {
     
+    $scope.person = {
+        name: 'John Doe',
+        address: '555 Main St., New York, NY 11111'
+    }
     
     
 }]);
 
-//searchResult directive
-myApp.directive('searchResult', function(){
-    return {
-        restrict: 'AECM',//Attribute || Element || Class || Comment
-        template: '<a href="#" class="list-group-item"><h4 class="list-group-item-heading">Doe, John</h4><p class="list-group-item-text">555 Main St.,New York, NY 1111</p></a>',
-        replace: true// removes custom tag from html
-    };
+myApp.directive("searchResult", function() {
+   return {
+       restrict: 'AECM',
+       templateUrl: 'directives/searchresult.html',
+       replace: true,
+       scope:{
+           personName: "@", //@ = text
+            personAddress: "@" //@ = text
+
+       }
+   }
 });
