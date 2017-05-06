@@ -42,7 +42,7 @@ myApp.directive("searchResult", function() {
        templateUrl: 'directives/searchresult.html',
        replace: true,
        scope: {
-           personObject: "="//= is a 2 way binding and allows  you to pass the object.
+           personObject: "="
        }
    }
 });
