@@ -23,16 +23,34 @@ myApp.config(function ($routeProvider) {
 
 myApp.controller('mainController', ['$scope', '$log', function($scope, $log) {
     
-    $scope.person = {
-        name: 'John Doe',
-        address: '555 Main St. ',
-        city: 'New York', 
-        state: 'NY',
-        zip: '11111'
-    }
+    $scope.people = [
+        {
+            name: 'John Doe',
+            address: '555 Main St.',
+            city: 'New York',
+            state: 'NY', 
+            zip: '11111'
+        },
+        {
+            name: 'Jane Doe',
+            address: '333 Second St.',
+            city: 'Buffalo',
+            state: 'NY', 
+            zip: '222222'
+        },
+        {
+            name: 'George Doe',
+            address: '111 third St.',
+            city: 'Miami',
+            state: 'FL', 
+            zip: '333333'
+        }
+    ];
     
-    $scope.formattedAddress= function (person){
-        return person.address+ ', '+ person.city+ ', '+person.state+ ' '+ person.zip;
+    $scope.formattedAddress = function(person) {
+      
+        return person.address + ', ' + person.city + ', ' + person.state + ' ' + person.zip;
+        
     };
     
 }]);
