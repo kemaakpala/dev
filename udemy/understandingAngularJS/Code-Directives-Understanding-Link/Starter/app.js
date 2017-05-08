@@ -70,32 +70,17 @@ myApp.directive("searchResult", function() {
            personObject: "=",
            formattedAddressFunction: "&"
        },
-       compile: function(elem, attrs){
+       link: function(scope, elements, attrs) {
+           console.log('linking...');
            
-           console.log('compiling ...');
-           console.log(elem.html());
-           
-           return {
-//               pre: function(scope, elements, attrs){
-//                   
-//                   console.log('Pre-linking ...');
-//                   console.log(elements);
-//                   
-//               },
-               
-               post: function(scope, element, attrs){
+           console.log(scope);
                    
-                   console.log('Post-linking ...');
-                   console.log(scope);
-                   if(scope.personObject.name == 'Jane Doe'){
-                       elements.removeAttr('class');
-                   }
-                   console.log(elements);
-                   
-                   
-               }
+           if (scope.personObject.name == 'Jane Doe') {
+                elements.removeAttr('class');
            }
            
+           console.log(elements);
        }
    }
+    
 });
