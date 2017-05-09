@@ -1,0 +1,8 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+       <h3 class="panel-title">{{ convertToDateFunction({thisdate: (w.dt)}) | date: 'MMM d, y' }}</h3>
+    </div>
+    <div class="panel-body">
+       Daytime temperature: {{ convertToFahrenheitFunction({thistemp: (w.temp.day)}) }}
+    </div>
+</div>
