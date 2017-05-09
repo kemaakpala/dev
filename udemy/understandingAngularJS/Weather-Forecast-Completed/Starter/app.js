@@ -66,6 +66,7 @@ weatherApp.controller('forecastController', ['$scope', '$resource', '$routeParam
     
 }]);
 
+//DIRECTIVES
 weatherApp.directive("forecastPanel", function() {
    return {
        restrict: 'E',
@@ -74,7 +75,8 @@ weatherApp.directive("forecastPanel", function() {
        scope: {
            forecastObject: "=",
            convertToDateFunction: "&",
-           convertToFahrenheitFunction: "&"
+           convertToFahrenheitFunction: "&",
+           dateFormat: "@"
        }
    }
 });
