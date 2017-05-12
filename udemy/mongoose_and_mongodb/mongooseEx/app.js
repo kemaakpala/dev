@@ -8,10 +8,17 @@ var port=8080;
 var db = 'mongodb://localhost:27017/example';
 mongoose.connect(db);
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+//route works
 app.get('/', function(req, res){
   res.send('happy to be here!');
 })
 
+//get all books
 app.get('/books', function(req, res){
   console.log('getting all books');
   Book.find({})
@@ -24,10 +31,8 @@ app.get('/books', function(req, res){
     }
   });
 });
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+
+//get one book
 app.get('/books/:id', function (req, res){
   console.log('getting one book');
   Book.findOne({
@@ -42,6 +47,22 @@ app.get('/books/:id', function (req, res){
   });
 });
 
+app.post('/book', function(req, res){
+  var newBook = new Book();
+
+  newBook.title = req.body.title;
+  newBook.author = req.body.author;
+  newBook.category = req.body.category;
+
+  newBook.save(function(err, book){
+    if(err){
+      res.send('error saving book');
+    }else{
+      console.log(book);
+      res.send(book);
+    }
+  });
+});
 app.listen(port, function(){
   console.log('app listening on port: '+ port);
 });
