@@ -5,10 +5,12 @@ var mongoose = require('mongoose');//require mongoose
 var Book = require('./Book.model');//require file module
 var port=8080;
 
+//datasource
 var db = 'mongodb://localhost:27017/example';
 mongoose.connect(db);
-
+//allows us to parse json elements
 app.use(bodyParser.json());
+//allows us to parse params
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -60,6 +62,46 @@ app.post('/book', function(req, res){
     }else{
       console.log(book);
       res.send(book);
+    }
+  });
+});
+
+app.post('/book2', function(req, res){
+  Book.create(req.body, function(err, book){
+    if(err){
+      res.send('error saving book');
+    }else{
+      console.log(book);
+      res.send(book);
+    }
+  });
+});
+
+
+app.put('/book/:id', function(req, res){
+  Book.findOneAndUpdate({
+    _id:req.params.id //query
+  },
+  {$set: {title: req.body.title}},
+  {upsert: true}, function(err, newBook){
+    if(err){
+      console.log('error occured');
+    }else{
+      console.log(newBook);
+      res.send(newBook);
+    }
+  });
+});
+
+app.delete('/book/:id', function(req, res){
+  Book.findOneAndRemove({
+    _id:req.params.id //query
+  },function(err, book){
+    if(err){
+      res.send('error delete');
+    }else{
+      console.log(book);
+      res.status(204);
     }
   });
 });
