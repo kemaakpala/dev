@@ -12,8 +12,11 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:300" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
   </head>
   <body>
     <header>
@@ -26,7 +29,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Patrick Akpala</a>
+            <a class="navbar-brand h1" href="#">P<small>atrick</small> A<small>kpala</small></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -39,22 +42,28 @@
     </header>
     <main class="container" role="main">
       <div class="row" id="about">
-        <div class="col-sm-12">
+        <div class="col-sm-12 col-md-12">
           <div class="jumbotron">
-            <h1>Hi I'm Patrick</h1>
-            <p>Welcome to my website. I'm a web developer with 5 years worth of experience. I love to Keep It Simple as I find this is always best for you and the wonderful projects we'll be working on.
-              Hit me up, via any one of my social links and lets get started on building wonderful projects together.
-            </p>
+            <div><img src=""></div>
+            <div>
+              <h1 class="h1">Hi I'm Patrick</h1>
+              <p>Welcome to my website. I'm a fullstack developerwith 5 years worth of experience. I love Keeping It Clean and Simple, I find this is always true with code as well as design.
+              Hit me up, via any one of my social links and lets get started on building wonderful projects together, I'm looking forward to working with you.
+              </p>
+            </div>
           </div>
           <div class="row tools">
+            <div class="col-sm-12">
+              <h2 class="h2 text-color white">Skills</h2>
+            </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-6 col-md-6">
               <div class="panel">
                 <div class="panel-body">
-                  <div class="col-sm-3">
-                    <img class="logos img-responsive" src="assets/img/HTML5_Logo.svg" alt="html5 logo">
+                  <div class="col-sm-3 col-md-3">
+                    <img class="logos img-responsive" src="assets/img/html5.png" alt="html5 logo">
                   </div>
-                  <div class="info-box col-sm-9">
+                  <div class="info-box col-sm-9 col-md-9">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc neque velit, tempor at bibendum non.</p>
                     <a href="#" class="btn btn-info">find out more</a>
                   </div>
@@ -65,7 +74,7 @@
               <div class="panel">
                 <div class="panel-body">
                   <div class="col-sm-3">
-                    <img class="img-responsive" src="assets/img/CSS3_logo_and_wordmark.svg" alt="CSS3 logo">
+                    <img class="img-responsive" src="assets/img/css3.png" alt="CSS3 logo">
                   </div>
                   <div class="info-box col-sm-9">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc neque velit, tempor at bibendum non.</p>
@@ -232,8 +241,11 @@
       </div><!-- row about-->
       <div class="row" id="contact">
         <div class="col-sm-12">
-          <h2>Contact</h2>
           <div class="row">
+
+            <div class="col-sm-12">
+              <h2 class="h2 text-color white">Contact</h2>
+            </div>
             <div id="map" class="col-sm-12">
 
             </div>
@@ -249,12 +261,13 @@
               <input type="text" class="form-control" placeholder="Subject"  value="">
             </div>
             <div class="form-group">
-              <textarea class="form-control" name="message" placeholder="enter message here" rows="3"></textarea>
+              <textarea class="form-control" name="message" placeholder="enter message here" rows="5"></textarea>
             </div>
             <div class="form-group">
               <div class="row">
                 <div class="col-sm-12">
                   <button type="submit" class="btn btn-default btn-block">Submit</button>
+                  <div class="g-recaptcha" data-sitekey="6Lff1SEUAAAAAGBz86rQA-9WhNcAqhOzFYFYgM6-"></div>
                 </div>
               </div>
             </div>
@@ -262,14 +275,39 @@
         </div>
       </div>
     </main>
-    <footer>
+    <footer class="container">
       <div class="row">
         <div class="col-sm-12">
-          <ul class="copy">
-            <li>
-              copyright 2016
-            </li>
-          </ul>
+          <div class="row">
+            <div class="col-sm-6 text-color white">
+              <div>
+                <img src="" class="img-responsive" alt="siteLogo">
+              </div>
+              <ul class="list-unstyled list-inline">
+                <li>
+                  <a class="" href="https://uk.linkedin.com/in/patrick-akpala-9b38a940" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Linkedin">
+                    <i class="fa fa-linkedin  fa-lg"></i>
+                  </a>
+                </li>
+                <li>
+                  <a class="" href="https://twitter.com/akpalapatrick" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Twitter">
+                    <i class="fa fa-twitter  fa-lg"></i>
+                  </a>
+                </li>
+                <li>
+                  <a class="" href="https://github.com/kemaakpala" target="_blank" data-toggle="tooltip" data-placement="bottom" title="github">
+                    <i class="fa fa-github  fa-lg"></i>
+                  </a>
+                </li>
+                <li>
+                  <a class="" href="https://www.freecodecamp.com/kemaakpala" target="_blank"  data-toggle="tooltip" data-placement="bottom" title="Free Code Camp">
+                    <i class="fa fa-free-code-camp  fa-lg"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-sm-6 text-color white text-align right"><i class="fa fa-copyright  fa-lg"></i>2016. All rights reserved.</div>
+          </div>
         </div>
       </div>
     </footer>

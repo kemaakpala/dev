@@ -1,3 +1,37 @@
-.skill-logo{
-  width:120px;
+html, body{
+  background: #AAB8F2; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(top, #AAB8F2,#8A9FF2,#2C405B, #161622);  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(top, #AAB8F2,#8A9FF2,#2C405B, #161622); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(top, #AAB8F2,#8A9FF2,#2C405B, #161622); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(top, #AAB8F2,#8A9FF2,#2C405B, #161622); /* Standard syntax (must be last) */
+  font-family: 'Open Sans', sans-serif;
 }
+
+h1, h2, .h2{
+  font-family: 'Open Sans', sans-serif;
+}
+div,p, button{
+  font-family: 'Raleway', sans-serif;
+}
+
+.text-color{
+  color: inherit;
+}
+.text-color.white{
+  color: rgb(255,255,255);
+}
+.text-align{
+  text-align: left;
+}
+.text-align.right{
+  text-align: right;
+}
+.text-align.justify{
+  text-align: justify;
+}
+.text-align.center{
+  text-align: center;
+}
+/*.h1{
+  font-size:36px !important;
+}*/
