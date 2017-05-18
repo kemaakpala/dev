@@ -1,5 +1,5 @@
 var express = require('express');//require node modules bordy-parser
-var app = express();//require node modules bordy-parser
+var app = express();//call express
 var bodyParser = require('body-parser');//require node modules bordy-parser
 var mongoose = require('mongoose');//require mongoose
 var Book = require('./Book.model');//require file module
