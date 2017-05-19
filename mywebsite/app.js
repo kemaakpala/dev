@@ -7,13 +7,14 @@ var setupController = require('./controllers/setupController');
 var apiController = require('./controllers/apiController');
 var Port = process.env.Port || 3000; //set default Port value
 
-app.use('/assets', express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/public'));
 
 app.set('view engine', 'ejs');
 
 mongoose.connect(config.getDbConnectionString());
 setupController(app);
 apiController(app);
+
 
 app.listen(Port);
 

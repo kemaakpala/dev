@@ -37,6 +37,7 @@ module.exports = function (app){
     //update
     mywebsiteMessages.findByIdAndUpdate(req.body.id,
       {
+        name: req.body.name,
         email: req.body.email,
         subject: req.body.subject,
         message: req.body.message,
@@ -69,8 +70,8 @@ module.exports = function (app){
     }
   });
 
-  app.delete('/api/todo', function(req, res){
-    mywebsiteMessages.findeByIdAndRemove(req.body.id,
+  app.delete('/api/mywebsitemessage', function(req, res){
+    mywebsiteMessages.findByIdAndRemove(req.body.id,
       function(err){
         if (err) {throw err;}
         res.send('Successfully Deleted: ' + req.body.id);
