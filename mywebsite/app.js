@@ -16,9 +16,20 @@ setupController(app);
 apiController(app);
 
 app.listen(Port);
+//used for settingup administrative permissions
+// use admin
+// db.createUser(
+//   {
+//     user: "patrick",
+//     pwd: "pa77cfkit",
+//     roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+//   }
+// )
 
 //used for setting up permissions to my website database
 //https://docs.mongodb.com/manual/tutorial/enable-authentication/
+
+// use mywebsitedb
 // db.createUser({
 //   user: 'patrickakpala',
 //   pwd: '6Vn2zZ8pK',
