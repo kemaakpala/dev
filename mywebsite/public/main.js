@@ -17,7 +17,6 @@ mywebsiteApp.config(function ($routeProvider) {
 mywebsiteApp.controller('homeController', [$scope, function(){
 
 }]);
-
 //controllers
 // mywebsiteApp.controller('contactController', [$scope, function(){
 //
