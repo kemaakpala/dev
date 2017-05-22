@@ -10,23 +10,23 @@
 
       </div>
     </div>
-    <form>
+    <form ng-submit="submit()">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Name"  value="">
+        <input type="text" class="form-control" placeholder="Name"  value="" ng-model="name">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Email" value="">
+        <input type="text" class="form-control" placeholder="Email" value="" ng-model="email">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Subject"  value="">
+        <input type="text" class="form-control" placeholder="Subject"  value="" ng-model="subject">
       </div>
       <div class="form-group">
-        <textarea class="form-control" name="message" placeholder="enter message here" rows="5"></textarea>
+        <textarea class="form-control" name="message" placeholder="enter message here" rows="5" ng-model="message"></textarea>
       </div>
       <div class="form-group">
         <div class="row">
           <div class="col-sm-12">
-            <button type="submit" class="btn btn-default btn-block">Submit</button>
+            <input type="submit" class="btn btn-default btn-block" ng-model="submit" value="Submit">
             <div class="g-recaptcha" data-sitekey="6Lff1SEUAAAAAGBz86rQA-9WhNcAqhOzFYFYgM6-"></div>
           </div>
         </div>
