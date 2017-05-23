@@ -10,23 +10,47 @@
 
       </div>
     </div>
-    <form ng-submit="submit()">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Name"  value="" ng-model="name">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Email" value="" ng-model="email">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Subject"  value="" ng-model="subject">
-      </div>
-      <div class="form-group">
-        <textarea class="form-control" name="message" placeholder="enter message here" rows="5" ng-model="message"></textarea>
+    
+    <form name="contactForm" ng-submit="submit(contactForm.$valid)" novalidate>
+      <div class="form-group has-success">
+        <div class="row">
+          <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder="First Name"  value="" ng-model="firstname" required> 
+            <p ng-show="contactForm.firstname.$invalid && !contactForm.firstname.$pristine" class="help-block">You First Name is required.</p>
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder="Last Name"  value="" ng-model="lastname"> 
+          </div>
+        </div>
       </div>
       <div class="form-group">
         <div class="row">
           <div class="col-sm-12">
-            <input type="submit" class="btn btn-default btn-block" ng-model="submit" value="Submit">
+            <input type="text" class="form-control" placeholder="Email" value="" ng-model="email" required>
+            <p ng-show="contactForm.email.$invalid && !contactForm.email.$pristine" class="help-block">Enter a valid email.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-12">
+            <input type="text" class="form-control" placeholder="Subject"  value="" ng-model="subject" required>
+            <p ng-show="contactForm.subject.$invalid && !contactForm.subject.$pristine" class="help-block">A subject is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-12">
+            <textarea class="form-control" name="message" placeholder="enter message here" rows="5" ng-model="message" required></textarea>
+            <p ng-show="contactForm.message.$invalid && !contactForm.message.$pristine" class="help-block">A message is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-12">
+            <input type="submit" class="btn btn-default btn-block" ng-model="submit" ng-disabled="contactForm.$invalid" value="Submit">
             <div class="g-recaptcha" data-sitekey="6Lff1SEUAAAAAGBz86rQA-9WhNcAqhOzFYFYgM6-"></div>
           </div>
         </div>

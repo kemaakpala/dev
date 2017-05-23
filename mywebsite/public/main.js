@@ -14,11 +14,11 @@ mywebsiteApp.config(function ($routeProvider) {
 
 //services
 mywebsiteApp.service('contactService', function(){
-   this.name = '';
+   this.firstname = '';
+   this.lastname = '';
    this.email = '';
    this.subject = '';
    this.message = '';
-   this.submit = '';
 });
 
 //controllers
@@ -26,14 +26,21 @@ mywebsiteApp.controller('homeController',
   [
     '$scope','$log', '$resource', '$window', 'contactService',
     function($scope, $log, $resource, $window, contactService){
-      $scope.name = contactService.name;
+      $scope.firstname = contactService.firstname;
+      $scope.lastname = contactService.lastname;
       $scope.email = contactService.email;
       $scope.subject = contactService.subject;
       $scope.message = contactService.message;
 
-      $scope.$watch('name', function(){
-        console.log('in name');
-         contactService.name = $scope.name;
+      $scope.$watch('firstname', function(){
+        console.log('in firstname');
+         contactService.firstname = $scope.firstname;
+         console.log(contactService);
+      });
+
+      $scope.$watch('lastname', function(){
+        console.log('in lastname');
+         contactService.lastname = $scope.lastname;
          console.log(contactService);
       });
       $scope.$watch('email', function(){
@@ -53,6 +60,12 @@ mywebsiteApp.controller('homeController',
       });
 
       $scope.submit = function(){
+
+          if(isValid){
+            alert('our form is amazing');
+            return false;
+          }
+
            var Contacts = $resource(
              'http://localhost:3000/api/mywebsitemessage/:id',
              { id: '@id' },
@@ -63,8 +76,7 @@ mywebsiteApp.controller('homeController',
                    name: '',
                    email: '',
                    subject: '',
-                   message: '',
-                   submit: 'submit'
+                   message: ''
                  }
                }
              }
@@ -75,7 +87,6 @@ mywebsiteApp.controller('homeController',
            newContact.name = contactService.name;
            newContact.email = contactService.email;
            newContact.subject = contactService.subject;
-           newContact.submit = contactService.submit;
            newContact.$save();
 
            //redirect
