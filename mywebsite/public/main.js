@@ -1,5 +1,5 @@
 //Module
-var mywebsiteApp = angular.module('mywebsiteApp', ['ngRoute', 'ngResource', 'ui.bootstrap']);
+var mywebsiteApp = angular.module('mywebsiteApp', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimate', 'ui.bootstrap']);
 
 //Routes
 mywebsiteApp.config(function ($routeProvider) {

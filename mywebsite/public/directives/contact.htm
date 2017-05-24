@@ -16,8 +16,15 @@
         <div class="col-sm-6">
           <div class="form-group" ng-class="{'has-error' : contactForm.firstname.$invalid && !contactForm.firstname.$pristine}">
             <input type="text" class="form-control" placeholder="First Name" name="firstname" value="" ng-model="firstname" required ng-minlength="2"> 
-            <span>{{contactForm.firstname.$valid}}{{contactForm.firstname.$pristine}}</span>
-            <p ng-show="contactForm.firstname.$invalid && !contactForm.firstname.$pristine" class="help-block">You First Name is required.</p>
+            <!--<p ng-show="contactForm.firstname.$invalid && !contactForm.firstname.$pristine" class="help-block">You First Name is required.</p>-->
+            <div ng-messages="contactForm.firstname.$error">
+              <p ng-message="required" class="help-block">
+                You forgot to enter your firstname
+              </p>
+              <p ng-message="minlength" class="help-block">
+                please enter a valid first name
+              </p>
+            </div>
           </div>
         </div>
         <div class="col-sm-6">
@@ -30,24 +37,50 @@
         <div class="col-sm-12">
           <div class="form-group" ng-class="{'has-error' : contactForm.email.$invalid && !contactForm.email.$pristine}">
             <input type="email" class="form-control" placeholder="Email" name="email" value="" ng-model="email" required>
-            <span>email.error: {{contactForm.email.$invalid }}</span>
-            <p ng-show="contactForm.email.$invalid && !contactForm.email.$pristine" class="help-block">Enter a valid email.</p>
+            <div ng-messages="contactForm.email.$error">
+              <p ng-message="required" class="help-block">
+                You forgot to enter your email address
+              </p>
+              <p ng-message="email" class="help-block">
+                you did not enter your email adress correctly ...
+              </p>
+            </div>
+            <!--<p ng-show="contactForm.email.$invalid && !contactForm.email.$pristine" class="help-block">Enter a valid email.</p>-->
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12">
           <div class="form-group" ng-class="{'has-error' : contactForm.subject.$invalid && !contactForm.subject.$pristine}">
-            <input type="text" class="form-control" placeholder="Subject" name="subject" value="" ng-model="subject" required ng-maxlength="50">
-            <p ng-show="contactForm.subject.$invalid && !contactForm.subject.$pristine" class="help-block">A subject is required.</p>
+            <input type="text" class="form-control" placeholder="Subject" name="subject" value="" ng-model="subject" required ng-minlength="5" ng-maxlength="50">
+            <!--<p ng-show="contactForm.subject.$invalid && !contactForm.subject.$pristine" class="help-block">A subject is required.</p>-->
+            <div ng-messages="contactForm.subject.$error">
+              <p ng-message="required" class="help-block">
+                You forgot to enter your subject here
+              </p>
+              <p ng-message="minlength" class="help-block">
+                please enter a subject more than 5 characters
+              </p>
+              <p ng-message="maxlength" class="help-block">
+                please enter a subject less than 50 characters
+              </p>
+            </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12">
           <div class="form-group" ng-class="{'has-error' : contactForm.message.$invalid && !contactForm.message.$pristine}">
-            <textarea class="form-control" name="message" placeholder="enter message here" rows="5" ng-model="message" required></textarea>
-            <p ng-show="contactForm.message.$invalid && !contactForm.message.$pristine" class="help-block">A message is required.</p>
+            <textarea class="form-control" name="message" placeholder="enter message here" rows="5" ng-model="message" required ng-maxlength="500"></textarea>
+            <!--<p ng-show="contactForm.message.$invalid && !contactForm.message.$pristine" class="help-block">A message is required.</p>-->
+            <div ng-messages="contactForm.message.$error">
+              <p ng-message="required" class="help-block">
+                You forgot to enter your message here
+              </p>
+              <p ng-message="maxlength" class="help-block">
+                please enter a subject no more than 500 characters
+              </p>
+            </div>
           </div>
         </div>
       </div>
