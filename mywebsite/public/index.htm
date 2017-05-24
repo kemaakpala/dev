@@ -33,6 +33,11 @@
 
   </head>
   <body>
+    <div class="container" id="canvasContainer">
+      <div class="row">
+        <!--<canvas id="myCanvas" width="3000" height="3000"></canvas>-->
+      </div>
+    </div>
     <header>
       <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -48,6 +53,8 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#">About</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Price</a></li>
               <li><a href="#">Contact</a></li>
             </ul>
           </div>
@@ -93,5 +100,98 @@
         </div>
       </div>
     </footer>
+
+    <script type="text/javascript">
+    // window.addEventListener("load", function(event){
+    //   console.log(document.documentElement.clientHeight, document.documentElement.offsetHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.body.scrollHeight,window.screen.height);
+
+    // });
+    window.addEventListener("load", function(event) {
+      var docBody = document.getElementsByTagName('body');
+      var canvasContainer = document.getElementById('canvasContainer');
+      var mainCanvas = document.createElement('canvas');
+      var vw = Math.max(document.documentElement.clientWidth, document.documentElement.offsetWidth);
+      var vh = Math.max(document.documentElement.clientHeight, document.documentElement.offsetHeight, document.documentElement.scrollHeight,document.body.offsetHeight);
+      console.log(document.documentElement.clientHeight, document.documentElement.offsetHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.body.scrollHeight,window.screen.height);
+      window.addEventListener('resize', setViewPortDimensions);
+      mainCanvas.setAttribute('width', vw);
+      mainCanvas.setAttribute('height', vh);
+      var setViewPortDimensions = function(event){
+          vw = Math.max(document.documentElement.clientWidth, document.documentElement.offsetWidth);
+          vh = Math.max(document.documentElement.clientHeight, document.documentElement.offsetHeight, document.documentElement.scrollHeight,document.body.offsetHeight);
+          mainCanvas.width =  vw;
+          mainCanvas.height= vh;
+          mainCanvas.style.cssText = 'border: 1px solid #fff; position:absolute; z-index:0; top:0; left:0;';
+          
+      };
+      mainCanvas.style.cssText = 'border: 1px solid #fff; position:absolute; z-index:0; top:0; left:0;';
+      canvasContainer.appendChild(mainCanvas);
+      var mainContext = mainCanvas.getContext('2d');
+      var circles = [];
+  
+      function Circle(radius, speed, width, xPos, yPos) {
+        this.radius = radius;
+        this.speed = speed;
+        this.width = width;
+        this.xPos = xPos;
+        this.yPos = yPos;
+        this.opacity = 0.05 + Math.random() * 0.5;
+  
+        this.counter = 0;
+  
+        var signHelper = Math.floor(Math.random() * 2);
+  
+        if (signHelper == 1) {
+          this.sign = -1;
+        } else {
+          this.sign = 1;
+        }
+      }
+  
+      Circle.prototype.update = function() {
+  
+        this.counter += this.sign * this.speed;
+  
+        mainContext.beginPath();
+  
+        mainContext.arc(this.xPos + Math.cos(this.counter / 100) * this.radius,
+          this.yPos + Math.sin(this.counter / 100) * this.radius,
+          this.width,
+          0,
+          Math.PI * 2,
+          false);
+  
+        mainContext.closePath();
+  
+        mainContext.fillStyle = 'rgba(185, 211, 238,' + this.opacity + ')';
+        mainContext.fill();
+      };
+  
+      function drawCircles() {
+        for (var i = 0; i < 500; i++) {
+          var randomX = Math.round(-200 + Math.random() * vw);
+          var randomY = Math.round( Math.random() * vh-(vh*0.25));
+          var speed = 0.02 + Math.random() * 0.25;
+          var size = 3 + Math.random() * 5;
+  
+          var circle = new Circle(100, speed, size, randomX, randomY);
+          circles.push(circle);
+        }
+        draw();
+      }
+      drawCircles();
+  
+      function draw() {
+        mainContext.clearRect(0, 0, vw, vh);
+  
+        for (var i = 0; i < circles.length; i++) {
+          var myCircle = circles[i];
+          myCircle.update();
+        }
+        requestAnimationFrame(draw);
+      }
+    });
+      window.removeEventListener('load', function(event){console.log('event removed')});
+    </script>
   </body>
 </html>
