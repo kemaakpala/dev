@@ -6,12 +6,14 @@
       <div class="col-sm-12">
         <h2 class="h2 text-color white">Contact</h2>
       </div>
-      <div id="map" class="col-sm-12">
+      <div id="successbox" class="col-sm-12" ng-show="success">
+        Thanks you very much for getting in touch. I strive to get back to all who've tried contacting me in a space of 24 hrs
+        click on this link to download a 20% development coupon.
 
       </div>
     </div>
     
-    <form name="contactForm" ng-submit="submit()" novalidate>
+    <form name="contactForm" ng-submit="submit()" novalidate ng-hide="success">
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group" ng-class="{'has-error' : contactForm.firstname.$invalid && !contactForm.firstname.$pristine}">

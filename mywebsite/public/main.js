@@ -19,6 +19,7 @@ mywebsiteApp.service('contactService', function(){
    this.email = '';
    this.subject = '';
    this.message = '';
+   this.success = false;
 });
 
 //controllers
@@ -26,6 +27,8 @@ mywebsiteApp.controller('homeController',
   [
     '$scope','$log', '$resource', '$window', 'contactService',
     function($scope, $log, $resource, $window, contactService){
+      $scope.success = contactService.success;
+
       console.log(contactService.firstname);
       $scope.firstname = contactService.firstname;
       $scope.lastname = contactService.lastname;
@@ -64,7 +67,6 @@ mywebsiteApp.controller('homeController',
           console.log($scope.contactForm.$valid);
           if($scope.contactForm.$valid){
             alert('our form is amazing');
-            return false;
           }
 
            var Contacts = $resource(
@@ -88,23 +90,13 @@ mywebsiteApp.controller('homeController',
            newContact.name = contactService.name;
            newContact.email = contactService.email;
            newContact.subject = contactService.subject;
-           newContact.$save();
-
+           newContact.$save(function(contact){
+             $scope.success = true;
            //redirect
-           $window.location.href = '/index.htm';
+           //$window.location.href = '/index.htm';
+           });
 
          };
-         console.log(contactService);
-         console.log($scope);
-      // $scope.weatherApi = $resource('http://localhost:3000/api/mywebsitemessage/');
-      // //save
-      // $scope.weatherApi.save(contactService, function(req, res){
-      //   console.log(res);
-      //   $resource.location('');
-      //   console.log(req);
-      //   console.log(contactService);
-      // });
-      console.log($scope);
 
     }
   ]
