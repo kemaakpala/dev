@@ -27,6 +27,7 @@ mywebsiteApp.controller('homeController',
   [
     '$scope','$log', '$resource', '$window', 'contactService',
     function($scope, $log, $resource, $window, contactService){
+      $scope.submitted = false;
       $scope.success = contactService.success;
 
       console.log(contactService.firstname);
@@ -63,10 +64,16 @@ mywebsiteApp.controller('homeController',
          console.log(contactService);
       });
 
-      $scope.submit = function(){
-          console.log($scope.contactForm.$valid);
-          if($scope.contactForm.$valid){
-            alert('our form is amazing');
+      $scope.submit = function(isValid){
+          console.log(isValid);
+          if(!isValid){
+            alert("An error has occured please check the form again.");
+            console.log($scope.submitted);
+            console.log($scope.$error);
+            console.log($scope.contactForm)
+            return false
+          }else{
+            $scope.submitted = true;
           }
 
            var Contacts = $resource(
