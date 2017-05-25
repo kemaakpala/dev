@@ -6,7 +6,7 @@ mywebsiteApp.config(function ($routeProvider) {
 
   $routeProvider
     .when('/', {
-      templateUrl: 'pages/home.htm',
+      templateUrl: '/pages/home.htm',
       controller: 'homeController'
     })
 
@@ -115,18 +115,6 @@ mywebsiteApp.directive('contactForm', function(){
   return {
     restrict: 'EA',//EACM
     templateUrl: 'directives/contact.htm',
-    replace: true, //, //false does not remove custom tag from html
-    //scope: {
-      //isolated scope directive cannot directly affect what's going on in its parent page
-
-    //}
-  }
-});
-
-mywebsiteApp.directive('googleMap', function(){
-  return {
-    restrict: 'EA',//EACM
-    templateUrl: 'directives/map.htm',
     replace: true, //, //false does not remove custom tag from html
     //scope: {
       //isolated scope directive cannot directly affect what's going on in its parent page
