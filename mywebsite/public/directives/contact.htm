@@ -59,10 +59,10 @@
             <form name="contactForm" ng-submit="submit()" novalidate ng-hide="success">
               <div class="row">
                 <div class="col-sm-6">
-                  <div class="form-group" ng-class="{'has-error' : contactForm.firstname.$invalid && !contactForm.firstname.$pristine}">
+                  <div class="form-group" ng-class="{'has-error' : contactForm.firstname.$invalid && !contactForm.firstname.$touched}">
                     <input type="text" class="form-control" placeholder="First Name" name="firstname" value="" ng-model="firstname" required ng-minlength="2"> 
                     <!--<p ng-show="contactForm.firstname.$invalid && !contactForm.firstname.$pristine" class="help-block">You First Name is required.</p>-->
-                    <div ng-messages="contactForm.firstname.$error">
+                    <div ng-messages="contactForm.firstname.$error" ng-show="contactForm.firstname.$touched">
                       <p ng-message="required" class="help-block">
                         You forgot to enter your firstname
                       </p>
@@ -80,15 +80,16 @@
               </div>
               <div class="row">
                 <div class="col-sm-12">
-                  <div class="form-group" ng-class="{'has-error' : contactForm.email.$invalid && !contactForm.email.$pristine}">
-                    <input type="email" class="form-control" placeholder="Email" name="email" value="" ng-model="email" required>
-                    <div ng-messages="contactForm.email.$error">
-                      <p ng-message="required" class="help-block">
+                  <div class="form-group" ng-class="{'has-error' : contactForm.email.$invalid && !contactForm.email.$touched}">
+                    <input type="email" class="form-control" placeholder="e.g. youEmailaddress@yourdomain.com" name="email" value="" ng-model="email" required>
+                    <div ng-messages="contactForm.email.$error"   ng-show="contactForm.email.$touched">
+                      <div ng-messages-include="msgIncludes/messages.htm"></div>
+                      <!--<p ng-message="required" class="help-block">
                         You forgot to enter your email address
                       </p>
                       <p ng-message="email" class="help-block">
                         you did not enter your email adress correctly ...
-                      </p>
+                      </p>-->
                     </div>
                     <!--<p ng-show="contactForm.email.$invalid && !contactForm.email.$pristine" class="help-block">Enter a valid email.</p>-->
                   </div>
@@ -132,8 +133,12 @@
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">
-                      <input type="submit" class="btn btn-default btn-block" ng-model="submit" ng-disabled="contactForm.$invalid" value="Submit">
+                      <input type="submit" class="btn btn-default btn-block" ng-model="submit" value="Submit">
                     </div>
+                    <pre>contactForm.firstname.$error = {{ contactForm.firstname.$error | json }}</pre>
+                    <pre>contactForm.email.$error = {{ contactForm.email.$error | json }}</pre>
+                    <pre>contactForm.subject.$error = {{ contactForm.subject.$error | json }}</pre>
+                    <pre>contactForm.message.$error = {{ contactForm.message.$error | json }}</pre>
                     <!--<div class="g-recaptcha" data-sitekey="6Lff1SEUAAAAAGBz86rQA-9WhNcAqhOzFYFYgM6-"></div>-->
                 </div>
               </div>
