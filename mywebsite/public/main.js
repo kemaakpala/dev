@@ -29,6 +29,7 @@ mywebsiteApp.controller('homeController',
     function($scope, $log, $resource, $window, contactService){
       $scope.submitted = false;
       $scope.success = contactService.success;
+      $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
       console.log(contactService.firstname);
       $scope.firstname = contactService.firstname;
@@ -72,8 +73,6 @@ mywebsiteApp.controller('homeController',
             console.log($scope.$error);
             console.log($scope.contactForm)
             return false
-          }else{
-            $scope.submitted = true;
           }
 
            var Contacts = $resource(
