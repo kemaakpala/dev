@@ -4,20 +4,23 @@ module.exports = function(app){
   app.get('/api/setupMessages', function(req, res){
     // seed database
     var starterMessages = [{
-      name: "John Doe",
+      firstname: "John Doe",
+      lastname: "Doe",
       subject: "hello Doe",
       email: "john@doe.com",
       message: "this is a seed message",
       date: new Date()
     },{
-      name: "Jane Doe",
+      firstname: "Jane Doe",
+      lastname: "Doe",
       subject: "hello Miss Doe",
       email: "jane@doe.com",
       message: "this is a seed message2",
       date: new Date()
 
     },{
-      name: "Johnny Doe",
+      firstname: "Johnny",
+      lastname: "Doe",
       subject: "hello Master Johnny  Doe",
       email: "Johnny@doe.com",
       message: "this is a seed message3",

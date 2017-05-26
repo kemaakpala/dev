@@ -37,7 +37,8 @@ module.exports = function (app){
     //update
     mywebsiteMessages.findByIdAndUpdate(req.body.id,
       {
-        name: req.body.name,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
         email: req.body.email,
         subject: req.body.subject,
         message: req.body.message,
@@ -53,7 +54,8 @@ module.exports = function (app){
     //insert
 
     var newMessage = mywebsiteMessages({
-      name: req.body.name,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
       email: req.body.email,
       subject: req.body.subject,
       message: req.body.message,
