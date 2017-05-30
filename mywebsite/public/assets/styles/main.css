@@ -45,9 +45,19 @@ div,p, button{
   margin-top:10px;
 }
 #myCanvas{
+  position: absolute;
+}
+.angular-google-map-container { height: 400px; }
+
+#particles-js {
   border: 1px #CCC solid;
   position: absolute;
   top:82px;
-  left:0
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
 }
-.angular-google-map-container { height: 400px; }
