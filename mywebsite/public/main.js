@@ -39,8 +39,7 @@ mywebsiteApp.controller('homeController',
       $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
       $scope.successMsg = null;
       $scope.errorMsg = null;
-
-      $scope.map = { center: { latitude: 1.3154016, longitude: 103.5668156 }, zoom: 8 };
+      $scope.map = { center: { latitude: 51.574653, longitude:-0.414034 }, zoom: 14 };
       
       console.log(contactService.firstname);
       $scope.firstname = contactService.firstname;

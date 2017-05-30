@@ -28,6 +28,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
     <script src="http://rawgit.com/angular-ui/angular-google-maps/2.0.X/dist/angular-google-maps.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src='/assets/js/particles.min.js'></script>
     <script src="/main.js"></script>
     <!-- Latest compiled and minified JavaScript
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -37,8 +38,9 @@
   </head>
   <body>
     <div class="container" id="canvasContainer">
-      <div class="row">
+      <div class="row" id="particles-js">
         <!--<canvas id="myCanvas" width="3000" height="3000"></canvas>-->
+        <script>particlesJS("particles-js", '/assets/json/particlesjs-config.json');</script>
       </div>
     </div>
     <header>
@@ -104,7 +106,7 @@
       </div>
     </footer>
 
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
     // window.addEventListener("load", function(event){
     //   console.log(document.documentElement.clientHeight, document.documentElement.offsetHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.body.scrollHeight,window.screen.height);
 
@@ -195,6 +197,6 @@
       }
     });
       window.removeEventListener('load', function(event){console.log('event removed')});
-    </script>
+    </script>-->
   </body>
 </html>
