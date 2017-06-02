@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/yeti/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- JS files -->
+    <script data-require="angular.js@1.2.10" data-semver="1.2.10" src="http://code.angularjs.org/1.2.10/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script data-require="angular-animate@1.2.11" data-semver="1.2.11" src="http://code.angularjs.org/1.2.11/angular-animate.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://bootswatch.com/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">var routerApp = angular.module('routerApp',['ui.router']);</script>
+    <script src="routes.js"></script>
+
+
+</head>
+
+<!-- apply our angular app to our site-->
+<body ng-app="routerApp" ng-controller="tCtrl as ctrl">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> 
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>  
+                </button>
+                <i class="fa fa-binoculars fa-3x fa-fw" style="margin-top:4px;color:white;"></i>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a ui-sref="home"> <i class="fa fa-home fa-2x"aria-hidden="true"></i> Home</a></li>
+                    <li><a ui-sref="myYoutube" ><i class="fa fa-youtube fa-2x fa-fw"></i><span>My Youtube</span></a></li>
+                    <li><a ui-sref="myInstagram"><i class="fa fa-instagram fa-2x fa-fw"></i><span>My Instagram</span></a></li>
+                    <li><a ui-sref="login"><i class="fa fa-user-circle fa-2x fa-fw"></i><span>Log In</span></a></li>
+                    <li><a ui-sref="create"><i class="fa fa-user-plus fa-2x fa-fw"></i><span>Sign In</span></a></li>
+                </ul>
+                
+            </div> <!--/.navbar-header -->
+        </div><!--/.container-fluid -->
+
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- This is where we will inject out content -->
+        <div ui-view></div>
+    </div>
+</body>
+
+</html>
