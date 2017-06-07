@@ -1,14 +1,20 @@
 //Module
-var mywebsiteApp = angular.module('mywebsiteApp', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimate', 'ui.bootstrap', 'uiGmapgoogle-maps']);
+var mywebsiteApp = angular.module('mywebsiteApp', ['ngRoute', 'ngResource', 'ngMessages', 'ngAnimate', 'uiGmapgoogle-maps', 'mgcrea.ngStrap']);
 
 //Routes
-mywebsiteApp.config(function ($routeProvider) {
+mywebsiteApp.config(function ($routeProvider, $locationProvider) {
 
   $routeProvider
+    .when('/index', {
+      templateUrl: 'pages/home.htm',
+      controller: 'homeController'
+    })
     .when('/', {
       templateUrl: 'pages/home.htm',
       controller: 'homeController'
     })
+   .otherwise({ redirectTo: '/index' });
+    $locationProvider.html5Mode(true);
 
 });
 

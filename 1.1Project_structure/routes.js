@@ -13,6 +13,10 @@ angular.module("routerApp")
                 url: "/create",
                 templateUrl: "routes_template/create_user.html"
             })
+            .state("showUsers", {
+                url: "/showUsers",
+                templateUrl: "routes_template/showUsers.html"
+            })
             .state("myYoutube", {
                 url: "/myYoutube",
                 templateUrl: "routes_template/youtube_videos.html"
