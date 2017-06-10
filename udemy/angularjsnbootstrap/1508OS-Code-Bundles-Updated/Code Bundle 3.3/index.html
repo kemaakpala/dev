@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link data-require="bootstrap-css@*" data-semver="3.2.0" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <script data-require="angular.js@*" data-semver="1.3.0" src="//code.angularjs.org/1.3.0/angular.js"></script>
+    <script data-require="angular.js@*" data-semver="1.3.0" src="//code.angularjs.org/1.3.0/angular-mocks.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+
+  <body ng-app="demoApp" ng-controller="MainCtrl">
+    <div class="container">
+      <form class="well input-form" name="inputform" ng-submit="submit()">
+        <div class="form-group has-feedback" ng-class="{'has-success': inputform.email.$dirty && inputform.email.$valid, 'has-error': inputform.email.$dirty && inputform.email.$invalid}">
+          <label class="control-label" for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" name="email" id="exampleInputEmail1" ng-model="data.email" placeholder="Enter email">
+          <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': inputform.email.$dirty && inputform.email.$valid, 'glyphicon-remove': inputform.email.$dirty && inputform.email.$invalid}"></span>
+        </div>
+        <div class="form-group has-feedback" ng-class="{'has-success': inputform.password.$dirty && inputform.password.$valid, 'has-error': inputform.password.$dirty && inputform.password.$invalid}">
+          <label class="control-label" for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" name="password" id="exampleInputPassword1" ng-model="data.password" placeholder="Password" required>
+          <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': inputform.password.$dirty && inputform.password.$valid, 'glyphicon-remove': inputform.password.$dirty && inputform.password.$invalid}"></span>
+        </div>
+        <button class="btn btn-primary" type="submit" ng-disabled="inputform.$invalid || inputform.$pristine">Submit</button>
+      </form>
+      <p>{{data}}<br>{{inputform.email}}<br>{{inputform.password}}</p>
+    </div>
+  </body>
+
+</html>
