@@ -21,7 +21,7 @@ mywebsiteApp.config(function ($routeProvider, $locationProvider) {
 //googlemaps
 mywebsiteApp.config(function (uiGmapGoogleMapApiProvider){
   uiGmapGoogleMapApiProvider.configure({
-    //    key: 'your api key',
+    key: 'AIzaSyB1T4AsvI4eSWFSlpNgm3wSnmRSllj-Bqw',
     v: '3.20', //defaults to latest 3.X anyhow
     libraries: 'weather,geometry,visualization'
   });
@@ -40,8 +40,8 @@ mywebsiteApp.service('contactService', function(){
 //controllers
 mywebsiteApp.controller('homeController',
   [
-    '$scope','$log', '$resource', '$window', 'contactService', 'uiGmapGoogleMapApi',
-    function($scope, $log, $resource, $window, contactService, uiGmapGoogleMapApi){
+    '$scope','$log', '$resource', '$location', 'contactService', 'uiGmapGoogleMapApi',
+    function($scope, $log, $resource, $location, contactService, uiGmapGoogleMapApi){
       $scope.submitted = false;
       $scope.success = contactService.success;
       $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
@@ -49,8 +49,9 @@ mywebsiteApp.controller('homeController',
       $scope.errorMsg = null;
       $scope.map = { center: { latitude: 51.574653, longitude:-0.414034 }, zoom: 14 };
       $scope.showParticles = true;
+      $scope.debugMode = 'false';
       
-      console.log(contactService.firstname);
+      //console.log(contactService.firstname);
       $scope.firstname = contactService.firstname;
       $scope.lastname = contactService.lastname;
       $scope.email = contactService.email;
@@ -59,6 +60,7 @@ mywebsiteApp.controller('homeController',
 
       $scope.$watch('firstname', function(){
          contactService.firstname = $scope.firstname;
+         //console.log(contactService.firstname);
       });
 
       $scope.$watch('lastname', function(){
@@ -75,16 +77,17 @@ mywebsiteApp.controller('homeController',
       });
 
       $scope.submit = function(isValid){
-          console.log(isValid);
+         //console.log(isValid);
           if(!isValid){
             $scope.errorMsg = "Oops! There's been an error. Please review and try again."; 
             $scope.successMsg = null
             return false
           }else{
             $scope.errorMsg = null;
+            $scope.postURL = location.protocol+'//'+location.host+'/api/mywebsitemessage/:id';
             
             var Contacts = $resource(
-              'http://localhost:3000/api/mywebsitemessage/:id',
+              $scope.postURL,
               { id: '@id' },
               {
                 contact: {
@@ -96,7 +99,7 @@ mywebsiteApp.controller('homeController',
 
             //create newContact
             var newContact = new Contacts();
-            newContact.firstname = contactService.name;
+            newContact.firstname = contactService.firstname;
             newContact.lastname = contactService.lastname;
             newContact.email = contactService.email;
             newContact.subject = contactService.subject;
@@ -105,7 +108,7 @@ mywebsiteApp.controller('homeController',
             //save newContact
             newContact.$save(function(contact){
               $scope.success = true;
-              $scope.successMsg = "Thanks you very much for getting in touch. I strive to get back to you in a space of 24 hrs.";
+              $scope.successMsg = "Thank you very much for getting in touch. I strive to reply all queries in a space of 24 hrs.";
             });
           }
 
