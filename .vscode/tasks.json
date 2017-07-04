@@ -1,0 +1,19 @@
+// {
+//     // See https://go.microsoft.com/fwlink/?LinkId=733558
+//     // for the documentation about the tasks.json format
+//     "version": "0.1.0",
+//     "command": "echo",
+//     "isShellCommand": true,
+//     "args": ["Hello World"],
+//     "showOutput": "always"
+// }
+
+//Sass configuration
+{
+    // See https://code.visualstudio.com/docs/languages/css
+    // for the documentation about the tasks.json format
+    "version": "0.1.0",
+    "command": "node-sass",
+    "isShellCommand": true,
+    "args": ["/Users/patrickakpala/dev/udemy/sass-project/scss/style.scss", "/Users/patrickakpala/dev/udemy/sass-project/css/style.css"]
+}
