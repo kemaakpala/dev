@@ -1,0 +1,73 @@
+@mixin tiny-screens(){
+  @media only screen and (max-width:320px){
+    @content;
+  }
+}
+
+@mixin small-screens(){
+  @media only screen and (max-width:480px){
+    @content;
+  }
+}
+
+@mixin medium-screens(){
+  @media only screen and (max-width:680px){
+    @content;
+  }
+}
+
+@mixin large-screens(){
+  @media only screen and (max-width:960px){
+    @content;
+  }
+}
+
+@mixin google-font($font){
+  $font: unquote($font);
+  @import url(https://fonts.googleapis.com/css?family=#{$font});//this can only be use in relation to css imports. it cannot be used with scss files.
+}
+
+@mixin warning{
+  background-color: orange;
+  color: #ffffff;
+}
+
+//good for adding multiple arguments at the same time. unrestricted number on what can be added.
+@mixin box-shadow($shadows...) {
+    box-shadow: $shadows;
+    -moz-box-shadow: $shadows;
+    -webkit-box-shadow: $shadows;
+
+}
+
+//this is being used for browser specific hacks
+@mixin apply-to-ie-6 {
+  * html{
+    @content;
+  }
+}
+
+@mixin large-text($size:22px, $weight: bold){
+  font: {
+    size: $size;
+    weight: $weight;
+  }
+}
+
+//mixin with argument and default value
+@mixin rounded ($radius: 6px) {
+  border-radius: $radius;
+}
+
+//mixin with arguments and default values
+@mixin box ($radius:6px, $border: 1px solid #000) {
+  @include rounded($radius);
+  border: $border;
+}
+
+@mixin fancy-links ($style: italic, $color: $text-color){
+  a {
+    font-style: $style;
+    color: $color;
+  }
+}
