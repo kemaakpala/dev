@@ -5,8 +5,59 @@
 */
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans);
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web);
+.col-1 {
+  width: 2em; }
+
+.col-2 {
+  width: 4em; }
+
+.col-3 {
+  width: 6em; }
+
+.col-4 {
+  width: 8em; }
+
+.col-5 {
+  width: 10em; }
+
+.col-6 {
+  width: 12em; }
+
+.bob-banker-profile {
+  background-image: url("/img/.#speaker.pmg"); }
+
+.patty-plume-profile {
+  background-image: url("/img/.#speaker.pmg"); }
+
+.sandra-smith-profile {
+  background-image: url("/img/.#speaker.pmg"); }
+
+.tiny {
+  font-size: 8px; }
+
+.small {
+  font-size: 11px; }
+
+.medium {
+  font-size: 13px; }
+
+.large {
+  font-size: 18px; }
+
+.picture-2 {
+  width: 20%; }
+
+.picture-4 {
+  width: 40%; }
+
+.picture-6 {
+  width: 60%; }
+
+.picture-8 {
+  width: 80%; }
+
 a {
-  font-style: normal;
+  font-style: italic;
   color: red; }
 
 body {
@@ -113,4 +164,5 @@ a {
 #footer {
   clear: both;
   height: 90px;
-  background-color: #698932; }
+  background-color: #698932;
+  border-top: 5px solid #3e511e; }
