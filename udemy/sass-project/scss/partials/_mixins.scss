@@ -30,6 +30,10 @@
 @mixin warning{
   background-color: orange;
   color: #ffffff;
+
+  &:hover {
+    background-color: lighten(orange , 10%);
+  }
 }
 
 //good for adding multiple arguments at the same time. unrestricted number on what can be added.
