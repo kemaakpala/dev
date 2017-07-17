@@ -1,3 +1,15 @@
+
+
+import {} from "/math/circle";
+console.log(PI);
+console.log(calculateCircumference(10));
+
+
+
+/* 
+///<reference path="circleMath.ts"/>
+///<reference path="rectangleMath.ts"/>
+///<reference path="namespace.ts"/>
 // implicitly implied types || do not assign types
 //string
 let myName = 'Patrick';
@@ -25,7 +37,7 @@ hobby = [100]; // this will transpile because it's an array and hobby is a type 
 *******************************************/
 //Explicitly implied types || assign types 
 //let myRealAge; //by default this is type any. i.e value coercion is active here
-let myRealAge: number; //by default this is type any. i.e value coercion is active here
+/* let myRealAge: number; //by default this is type any. i.e value coercion is active here
 myRealAge = 27;
 
 let myLastName: string = 'Akpala';
@@ -362,3 +374,4 @@ console.log(right.name);
 //right.name = 'Something else';
 
 console.log('-------------END of app.ts----------');
+ */

@@ -13,9 +13,9 @@ greet1("Anna");
 var numbers2 = [-3, 33, 38, 5];
 console.log(Math.min.apply(Math, numbers2));
 // Exercise 4 -  '...' Spread Operator
-var newArray = [55, 20];
-newArray.push.apply(newArray, numbers);
-console.log(newArray);
+// const newArray = [55, 20];
+// newArray.push(...numbers);
+// console.log(newArray);
 // Exercise 5 - Destructuring Arrays
 var testResults = [3.89, 2.99, 1.38];
 var result1 = testResults[0], result2 = testResults[1], result3 = testResults[2];

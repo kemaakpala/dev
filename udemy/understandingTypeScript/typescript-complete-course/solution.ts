@@ -13,9 +13,9 @@ const numbers2 = [-3, 33, 38, 5];
 console.log(Math.min(...numbers2));
  
 // Exercise 4 -  '...' Spread Operator
-const newArray = [55, 20];
-newArray.push(...numbers);
-console.log(newArray);
+// const newArray = [55, 20];
+// newArray.push(...numbers);
+// console.log(newArray);
  
 // Exercise 5 - Destructuring Arrays
 const testResults = [3.89, 2.99, 1.38];
