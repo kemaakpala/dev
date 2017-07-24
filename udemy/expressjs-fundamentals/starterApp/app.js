@@ -10,9 +10,23 @@ var users = require('./routes/users');
 
 var app = express();
 
-// view engine setup
+// Default: Jade View Engine Setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+//EJS View Engine Setup
+// app.set('views', './src/views');
+// app.set('view engine', 'ejs');
+
+//Swig View Engine Setup
+// app.engine('html', swig.renderFile);
+
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'html');
+
+//HandleBars View Engine Setup
+// app.engine('handlebars', handlebars.engine);
+// app.set('view engine', 'handlebars');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
