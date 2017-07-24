@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body ng-app="factoryVSserviceVSprovider" ng-controller="myFactoryCtrl">
+        {{data}}
+        <input type="text" ng-model="data.artist" placeholder="artist">
+        <button type="submit" ng-click="submitArtist(data.artist)">Post</button>
+    </body>
+</html>
