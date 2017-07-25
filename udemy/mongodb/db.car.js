@@ -27,6 +27,11 @@ db.car.update({
 {
   $upset:true
 })
+//insert multiple records
+db.contactlist.insert([
+  { name: 'Patrick', email: 'patrick@testemail.com', number: '(555) 555-5555' },
+  { name: 'Demee', email: 'Demee@testemail.com', number: '(777) 777-7777' }
+]);
 // deletes all records in the document
 //db.car.remove({})
 
