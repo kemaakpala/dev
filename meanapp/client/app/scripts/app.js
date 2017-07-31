@@ -23,7 +23,7 @@ angular
       })
       .when('/movies', {
         templateUrl: 'views/movies.html',
-        controller: 'MoviesCtrl',
+        controller: 'MoviesCtrl'
         //controllerAs: 'about' these are only needed for nested views
       })
       .otherwise({
