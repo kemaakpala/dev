@@ -17,8 +17,8 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 //CORS: Cross Origin Resource Sharing Support
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');// allows access of rest api to any server
-    res.header('Allow-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Allow-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 })
 
