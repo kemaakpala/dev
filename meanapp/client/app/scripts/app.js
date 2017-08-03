@@ -71,7 +71,7 @@ angular
       scope: {
         src: '='
       },
-      templateUrl: 'Views/youtube.html'
+      templateUrl: 'views/youtube.html'
     };
   }).filter('trusted', function($sce) {
     return function(url) {

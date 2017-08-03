@@ -1,0 +1,16 @@
+{
+  "name": "angularuiroutertuts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.3",
+    "angular": "^1.6.5",
+    "@uirouter/visualizer": "^4.0.0"
+  }
+}
