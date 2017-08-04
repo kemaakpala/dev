@@ -41,12 +41,12 @@ myApp.config(function ($stateProvider) {
             url: '/people/{personId}',//passes person id 
             component: 'person',
             resolve: {
-                /* 
+                /****************************************************************** 
                 ** data needed is specified here. 
                 ** ui.router will fetch required data b4 activating the state.
                 ** This state defines a 'person' resolve
                 ** It delegates to the PeopleService, passing the personId parameter
-                */
+                *******************************************************************/
                 person: function (PeopleService, $transition$) {
                     return PeopleService.getPerson($transition$.params().personId);
                 }
