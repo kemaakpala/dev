@@ -88,8 +88,8 @@ let complex2: Complex = {
  //union types
  let bool = false;
  let myRealRealAge: number | string = 27;
- //myRealRealAge = "27";
- myRealRealAge = false;
+ myRealRealAge = "27";
+ //myRealRealAge = false;
  console.log(myRealRealAge);
 
  //check types
@@ -109,10 +109,20 @@ let complex2: Complex = {
  let canBeNull: number | null = 12;
  console.log('canBeNull: ', canBeNull);
  
- let canAlsoBeNull;// has no type at the point of initial declaration
+ let canAlsoBeNull;// has an implicit type of any
  canAlsoBeNull = null;// this is basicaly the same as the above but just on one line.
  console.log('canAlsoBeNull: ', canAlsoBeNull);
 
  let canThisBeNull = null; // this should be implicitly of type null: further investigation required as to why it is not.
  canThisBeNull = 3;
  console.log(canThisBeNull);
+
+ function controlMe(isTrue: boolean, somethingElse: boolean) {
+     let result: number;
+     if(isTrue) {
+         result = 12;
+     }
+     result = 33;
+     return result;
+ }
+//this function will not error with the default tsconfig. u need to turn on "noUnusedParameters" to prevent this type of error

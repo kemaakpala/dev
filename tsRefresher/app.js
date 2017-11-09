@@ -1,3 +1,4 @@
+"use strict";
 //string
 var myName = 'Kema';
 //myName = 28;
@@ -72,8 +73,8 @@ var complex2 = {
 //union types
 var bool = false;
 var myRealRealAge = 27;
-//myRealRealAge = "27";
-myRealRealAge = false;
+myRealRealAge = "27";
+//myRealRealAge = false;
 console.log(myRealRealAge);
 //check types
 var finalValue = 31;
@@ -89,9 +90,17 @@ function neverReturns() {
 //Nullable Types
 var canBeNull = 12;
 console.log('canBeNull: ', canBeNull);
-var canAlsoBeNull; // has no type at the point of initial declaration
+var canAlsoBeNull; // has an implicit type of any
 canAlsoBeNull = null; // this is basicaly the same as the above but just on one line.
 console.log('canAlsoBeNull: ', canAlsoBeNull);
 var canThisBeNull = null; // this should be implicitly of type null: further investigation required as to why it is not.
 canThisBeNull = 3;
 console.log(canThisBeNull);
+function controlMe(isTrue, somethingElse) {
+    var result;
+    if (isTrue) {
+        result = 12;
+    }
+    result = 33;
+    return result;
+}
