@@ -89,7 +89,7 @@ let complex2: Complex = {
  let bool = false;
  let myRealRealAge: number | string = 27;
  //myRealRealAge = "27";
- //myRealRealAge = false;
+ myRealRealAge = false;
  console.log(myRealRealAge);
 
  //check types
@@ -110,7 +110,7 @@ let complex2: Complex = {
  console.log('canBeNull: ', canBeNull);
  
  let canAlsoBeNull;// has no type at the point of initial declaration
- canAlsoBeNull = 15;// this is basicaly the same as the above but just on one line.
+ canAlsoBeNull = null;// this is basicaly the same as the above but just on one line.
  console.log('canAlsoBeNull: ', canAlsoBeNull);
 
  let canThisBeNull = null; // this should be implicitly of type null: further investigation required as to why it is not.

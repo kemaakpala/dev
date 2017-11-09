@@ -1,4 +1,3 @@
-"use strict";
 //string
 var myName = 'Kema';
 //myName = 28;
@@ -74,7 +73,7 @@ var complex2 = {
 var bool = false;
 var myRealRealAge = 27;
 //myRealRealAge = "27";
-//myRealRealAge = false;
+myRealRealAge = false;
 console.log(myRealRealAge);
 //check types
 var finalValue = 31;
@@ -91,8 +90,8 @@ function neverReturns() {
 var canBeNull = 12;
 console.log('canBeNull: ', canBeNull);
 var canAlsoBeNull; // has no type at the point of initial declaration
-canAlsoBeNull = 15; // this is basicaly the same as the above but just on one line.
+canAlsoBeNull = null; // this is basicaly the same as the above but just on one line.
 console.log('canAlsoBeNull: ', canAlsoBeNull);
-var canThisBeNull = null;
+var canThisBeNull = null; // this should be implicitly of type null: further investigation required as to why it is not.
 canThisBeNull = 3;
 console.log(canThisBeNull);
