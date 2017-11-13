@@ -126,3 +126,8 @@ let complex2: Complex = {
      return result;
  }
 //this function will not error with the default tsconfig. u need to turn on "noUnusedParameters" to prevent this type of error
+
+console.log("****** modules ******")
+import {PI, calculateCircumference} from "./math/circle";
+console.log(PI);
+console.log(calculateCircumference);

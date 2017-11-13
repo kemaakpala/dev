@@ -1,3 +1,4 @@
+console.log("****** Exercise One ******")
 type BankAccount = {money: number, deposit: (value: number) => void};
 
 let bankAccount: BankAccount = {

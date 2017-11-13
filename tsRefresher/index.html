@@ -5,7 +5,26 @@
         <meta http-equiv="X-UA-COMPATIBLE" CONTENT="IE=edge">
     </head>
     <body>
-        <script src="app.js"></script>
+        <!-- <script src="app.js"></script>
+        <script src="exercise_one.js"></script>
+        <script src="es6_intro.js"></script>
+        <script src="exercise_two.js"></script>
+        <script src="creatingClassesAndClasProperties.js"></script>
+        <script src="exercise_three.js"></script>
+        <script src="nameSpaces.js"></script> 
+        <script src = "ns_circ_rect.js"></script>-->
+        <script src="node_modules/systemjs/dist/system.js"></script>
+        <script>
+            SystemJS.config({
+                baseURL: "/",
+                packages: {
+                    "/": {
+                        defaultExtension: "js"
+                    }
+                }
+            });
+            SystemJS.import("app.js");
+        </script>
     </body>
 
 </html>
