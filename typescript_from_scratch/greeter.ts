@@ -8,7 +8,7 @@ interface Person {
     firstname: string,
     lastname: string
 }
-function greeter(Person){
+function greeter(Person: any){
     return `Hello ${Person.firstname} ${Person.lastname}`;
 }
 let user = new Student('Patrick', 'K', 'Akpala');

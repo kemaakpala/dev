@@ -7,7 +7,19 @@
 </head>
 
 <body>
-    <script src="./greeter.js"></script>
+    <script src="app.js"></script>
+    <script src="./node_modules/systemjs/dist/system.js"></script>
+    <script>
+        SystemJS.config({
+            transpiler: "ts",
+            packages: {
+                "app": {
+                    "defaultExtension": "ts"
+                }
+            }
+        });
+        SystemJS.import('app.js');
+    </script>
 </body>
 
 </html>
