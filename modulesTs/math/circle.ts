@@ -1,0 +1,3 @@
+let calculateRectangle = (width, length) => {
+
+};
