@@ -1,2 +1,2 @@
 //namespace.ts
-//var CircleMath = MyMath.Circle;
+var CircleMath = MyMath.Circle;

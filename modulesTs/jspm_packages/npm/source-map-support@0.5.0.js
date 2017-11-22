@@ -1,0 +1,1 @@
+module.exports = require("npm:source-map-support@0.5.0/source-map-support.js");

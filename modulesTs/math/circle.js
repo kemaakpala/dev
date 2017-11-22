@@ -1,8 +1,14 @@
-define(["require", "exports"], function (require, exports) {
+System.register([], function (exports_1, context_1) {
     "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.PI = 3.14;
-    exports.calculateCircumference = function (diameter) {
-        return diameter * exports.PI;
+    var __moduleName = context_1 && context_1.id;
+    var PI, calculateCircumference;
+    return {
+        setters: [],
+        execute: function () {
+            exports_1("PI", PI = 3.14);
+            exports_1("calculateCircumference", calculateCircumference = function (diameter) {
+                return diameter * PI;
+            });
+        }
     };
 });

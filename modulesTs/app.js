@@ -1,23 +1,23 @@
-define("math/circle", ["require", "exports"], function (require, exports) {
+System.register(["./math/circle", "./math/rectangle"], function (exports_1, context_1) {
     "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.PI = 3.14;
-    exports.calculateCircumference = function (diameter) {
-        return diameter * exports.PI;
+    var __moduleName = context_1 && context_1.id;
+    var Circle, rectangle_1;
+    return {
+        setters: [
+            function (Circle_1) {
+                Circle = Circle_1;
+            },
+            function (rectangle_1_1) {
+                rectangle_1 = rectangle_1_1;
+            }
+        ],
+        execute: function () {
+            // console.log(PI);
+            // console.log(calculateCircumference(10));
+            console.log(Circle.PI);
+            console.log(Circle.calculateCircumference(10));
+            //console.log(calculateRectangle(4,3));
+            console.log(rectangle_1.default(4, 3));
+        }
     };
-});
-define("math/rectangle", ["require", "exports"], function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var calculateRectangle = function (width, length) {
-        return width + length;
-    };
-    exports.calculateRectangle = calculateRectangle;
-});
-define("app", ["require", "exports", "math/circle", "math/rectangle"], function (require, exports, circle_1, rectangle_1) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    console.log(circle_1.PI);
-    console.log(circle_1.calculateCircumference(10));
-    console.log(rectangle_1.calculateRectangle);
 });

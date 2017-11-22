@@ -7,18 +7,17 @@
 </head>
 
 <body>
-    <script src="app.js"></script>
-    <script src="./node_modules/systemjs/dist/system.js"></script>
+    <script src="node_modules/systemjs/dist/system.js"></script>
     <script>
-        SystemJS.config({
-            transpiler: "ts",
+        System.config({
+            baseURL: "/",
             packages: {
-                "app": {
-                    "defaultExtension": "ts"
+                "/": {
+                    "defaultExtension": "js"
                 }
             }
         });
-        SystemJS.import('app.js');
+        System.import('app.js');
     </script>
 </body>
 
