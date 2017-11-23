@@ -1,5 +1,5 @@
 {
-  "name": "interfacets",
+  "name": "sysjsmodules",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,10 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "lite-server": "^2.3.0"
+  },
+  "dependencies": {
+    "systemjs": "^0.20.19"
   }
 }

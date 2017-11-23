@@ -16,6 +16,7 @@ System.register(["./math/circle", "./math/rectangle"], function (exports_1, cont
             // console.log(calculateCircumference(10));
             console.log(Circle.PI);
             console.log(Circle.calculateCircumference(10));
+            console.log('calculateArc: ', Circle.calculateArc(20));
             //console.log(calculateRectangle(4,3));
             console.log(rectangle_1.default(4, 3));
         }

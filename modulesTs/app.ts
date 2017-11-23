@@ -7,5 +7,6 @@ import calcRect from "./math/rectangle"; //syntax for default import
 // console.log(calculateCircumference(10));
 console.log(Circle.PI);
 console.log(Circle.calculateCircumference(10));
+console.log('calculateArc: ',Circle.calculateArc(20));
 //console.log(calculateRectangle(4,3));
 console.log(calcRect(4,3));

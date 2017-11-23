@@ -1,3 +1,4 @@
+/* Namespaces should be used for smaller applications or very few functions. */
 /*
 run this command in terminal to bundle the math files into one app.js file. this is a solutino but not the preferred solution.
 tsc --outFile app.js circleMath.ts rectangleMath.ts app.ts*/
