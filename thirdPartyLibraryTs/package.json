@@ -1,0 +1,17 @@
+{
+  "name": "thirdpartylibraryts",
+  "version": "1.0.0",
+  "description": "installing third party libraries. e.g Jquery",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  },
+  "dependencies": {
+    "systemjs": "^0.20.19"
+  }
+}
