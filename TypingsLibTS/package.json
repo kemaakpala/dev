@@ -1,7 +1,7 @@
 {
-  "name": "thirdpartylibraryts",
+  "name": "typingslibts",
   "version": "1.0.0",
-  "description": "installing third party libraries. e.g Jquery",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "lite-server"
@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jquery": "^3.2.16",
     "lite-server": "^2.3.0"
   },
   "dependencies": {
