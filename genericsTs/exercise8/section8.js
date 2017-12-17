@@ -10,8 +10,10 @@ var myMap = /** @class */ (function () {
         return this.thisEmptyObject[key];
     };
     myMap.prototype.clear = function () {
+        return this.thisEmptyObject = {};
     };
     myMap.prototype.printMap = function () {
+        console.log(this.thisEmptyObject);
     };
     return myMap;
 }());

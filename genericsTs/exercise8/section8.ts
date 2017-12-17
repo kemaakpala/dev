@@ -7,9 +7,9 @@ class myMap <U extends string,T extends number | string>{
         return this.thisEmptyObject[key];
     }
     clear(){
-
+        return this.thisEmptyObject = {};
     }
     printMap(){
-
+        console.log(this.thisEmptyObject);
     }
 }
