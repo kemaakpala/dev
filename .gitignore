@@ -31,3 +31,4 @@ Thumbs.db
 #Nodejs generated files#
 
 node_modules/
+config/production.json
