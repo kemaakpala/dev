@@ -1,0 +1,10 @@
+.container {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+
+#response {
+  margin-top: 15px;
+}
