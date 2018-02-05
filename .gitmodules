@@ -1,2 +1,12 @@
 [submodule "ReduxSimpleStarter"]
 	url = https://github.com/kemaakpala/ReduxSimpleStarter.git
+[submodule "ReduxCasts"]
+	url = https://github.com/kemaakpala/ReduxCasts.git
+[submodule "Learn-Node"]
+	url = https://github.com/kemaakpala/Learn-Node.git
+[submodule "mywebsite"]
+	url = https://github.com/kemaakpala/mywebsite.git
+[submodule "back-end"]
+	url = https://github.com/kemaakpala/back-end.git
+[submodule "front-end"]
+	url = https://github.com/kemaakpala/front-end.git
